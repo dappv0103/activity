@@ -9,6 +9,7 @@ var server = net.createServer(function(socket) { //'connection' listener
   socket.on('data', function(data) {
     data = JSON.parse(data);
     var cmd =  Command.find(data.name);
+    delete data.name;
     if(cmd != null) {
       cmd.run(data, function(result) {
         socket.write(result);
