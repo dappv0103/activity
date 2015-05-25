@@ -9,7 +9,7 @@ function removeCmd() {
   this.error = null;
 };
 
-removeCmd.prototype.run(data) {
+removeCmd.prototype.run  = function(data) {
   Feed.remove(data);
   Notification.remove(data);
   this.data = {
@@ -18,19 +18,19 @@ removeCmd.prototype.run(data) {
   return this;
 };
 
-removeCmd.prototype.getResult() {
+removeCmd.prototype.getResult = function() {
   if(this.data == null) {
     this.data = this.getError();
   }
   return this.data();
 };
 
-removeCmd.prototype.getError() {
+removeCmd.prototype.getError = function() {
   return this.error;
 };
 
-removeCmd.prototype.getString() {
+removeCmd.prototype.getString = function() {
   
-}
+};
 
 
