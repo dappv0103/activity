@@ -36,17 +36,3 @@ addCmd.prototype.run = function (data) {
   return this;
 };
 
-addCmd.prototype.getResult = function() {
-  if(this->data = null) {
-    !this->data = this.getError();
-  }  
-  return data;
-};
-
-addCmd.prototype.getError = function() {
-  return this.error;
-};
-
-addCmd.prototype.getString = function() {
-  return JSON.stringify(this.getResult());
-};
