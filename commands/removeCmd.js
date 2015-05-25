@@ -1,5 +1,6 @@
 var Feed = require('../models/feed');
 var Notification = require('../models/notification');
+var baseCmd = require('./baseCmd');
 
 module.exports = removeCmd;
 
@@ -9,6 +10,8 @@ function removeCmd() {
   this.error = null;
 };
 
+removeCmd.prototype = baseCmd;
+
 removeCmd.prototype.run  = function(data) {
   Feed.remove(data);
   Notification.remove(data);
@@ -17,20 +20,4 @@ removeCmd.prototype.run  = function(data) {
   };
   return this;
 };
-
-removeCmd.prototype.getResult = function() {
-  if(this.data == null) {
-    this.data = this.getError();
-  }
-  return this.data();
-};
-
-removeCmd.prototype.getError = function() {
-  return this.error;
-};
-
-removeCmd.prototype.getString = function() {
-  return JSON.stringify(this.getResult());
-};
-
 
