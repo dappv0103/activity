@@ -13,6 +13,7 @@ Feed.prototype.add = function(users, data) {
     new_data.user_id = users[i];
     this.mongo.insert(new_data);
     
+    this.clearCache(users);
   }
   
   
