@@ -13,7 +13,7 @@ function addCmd() {
 
 addCmd.prototype = baseCmd;
 
-addCmd.prototype.run = function (data) {
+addCmd.prototype.run = function (data, callback) {
   var self;
   
   // newsfeed 
@@ -33,6 +33,6 @@ addCmd.prototype.run = function (data) {
   this.data = {
     result: 'ok'
   };
-  return this;
+  callback(this.getString());
 };
 
