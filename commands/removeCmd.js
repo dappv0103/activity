@@ -30,7 +30,7 @@ removeCmd.prototype.getError = function() {
 };
 
 removeCmd.prototype.getString = function() {
-  
+  return JSON.stringify(this.getResult());
 };
 
 
