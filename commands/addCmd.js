@@ -14,6 +14,9 @@ addCmd.prototype.run(data) {
     'following': data.actor.user_id,
   }).getIds();
   feed.add(users, data);
+  this.data = {
+    result: 'ok'
+  };
   return this;
 };
 
