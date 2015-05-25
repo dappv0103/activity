@@ -1,5 +1,7 @@
-var feed = require('../models/feed');
+var Feed = require('../models/feed');
 var User = require('../models/user');
+var Notification = require('../models/notification');
+
 module.exports = addCmd;
 
 
@@ -15,14 +17,14 @@ addCmd.prototype.run(data) {
   User.find({
     'following': data.actor.user_id,
   }, function(err, users) {
-    feed.add(users, data);
+    Feed.add(users, data);
   });
   
   // notification
   User.find({
     'notify': data.actor.user_id,
   }, function(err, users) {
-    notification.add(users, data);
+    Notification.add(users, data);
   });
   
   this.data = {
