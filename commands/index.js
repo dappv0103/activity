@@ -1,8 +1,8 @@
 var _commands = [
-  'add': require('./addActivity'),
-  'remove': require('/removeActivity'),
-  'find' : require('./find'),
-  'cout' : require('./cout'),
+  'add': require('./addCmd'),
+  'remove': require('/removeCmd'),
+  'find' : require('./findCmd'),
+  'cout' : require('./coutCmd'),
 ];
 
 export.find(name) {
