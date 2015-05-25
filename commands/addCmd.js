@@ -4,7 +4,8 @@ module.exports addCmd;
 
 
 function addCmd() {
-  this.data = "";
+  this.data = null;
+  this.error = null;
 };
 
 addCmd.prototype.run(data) {
@@ -12,10 +13,14 @@ addCmd.prototype.run(data) {
 };
 
 addCmd.prototype.getResult() {
-  if(!this->data) {
-    
+  if(this->data = null) {
+    !this->data = this.getError();
   }  
   return data;
+};
+
+addCmd.prototype.getError() {
+  return this.error;
 };
 
 addCmd.prototype.getString() {
