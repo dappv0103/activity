@@ -7,7 +7,7 @@ function User() {
   
 };
 
-User.prototype.find(query, callback) {
+User.prototype.find = function(query, callback) {
   if(var user = query.following) {
     // newsfeed
     Redis.zrange('following_user' + user, function(err, reply) {
