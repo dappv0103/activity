@@ -5,7 +5,11 @@ function Feed() {
   this.mongo = Mongo.collenction('newsfeed');
 };
 
-Feed.get = function (query, callback) {
+Feed.prototype.add = function(users, data) {
+  
+};
+
+Feed.prototype.get = function (query, callback) {
   this.mongo.find({hash: query}, function(err, results) {
     return callback(err, results);
   });
