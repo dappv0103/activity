@@ -1,6 +1,6 @@
 
 
-module.exports addCmd;
+module.exports = addCmd;
 
 
 function addCmd() {
