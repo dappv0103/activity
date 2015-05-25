@@ -1,4 +1,4 @@
-
+var feed = require('../models/feed');
 
 module.exports = addCmd;
 
@@ -9,6 +9,11 @@ function addCmd() {
 };
 
 addCmd.prototype.run(data) {
+  var self;
+  var users = user.find({
+    'following': data.actor.user_id,
+  }).getIds();
+  feed.add(users, data);
   return this;
 };
 
