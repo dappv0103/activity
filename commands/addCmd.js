@@ -1,6 +1,7 @@
 var Feed = require('../models/feed');
 var User = require('../models/user');
 var Notification = require('../models/notification');
+var baseCmd = require('./baseCmd');
 
 module.exports = addCmd;
 
@@ -9,6 +10,8 @@ function addCmd() {
   this.data = null;
   this.error = null;
 };
+
+addCmd.prototype = baseCmd;
 
 addCmd.prototype.run = function (data) {
   var self;
