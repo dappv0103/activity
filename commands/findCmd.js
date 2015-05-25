@@ -15,10 +15,12 @@ findCmd.prototype = baseCmd;
 findCmd.prototype.run = function (data, callback) {
   var self = this;
   if(data.type === 'feed') {
+    delete data.type;
     Feed.get(data, function(results) {
       self.callCmd(results, callback);
     });
   } else(data.type === 'notify') {
+    delete data.type;
     Notification.get(data, function(results) {
       self.callCmd(results, callback);
     });
