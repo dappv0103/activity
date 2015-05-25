@@ -18,6 +18,6 @@ removeCmd.prototype.run  = function(data) {
   this.data = {
     result:'ok'
   };
-  return this;
+  callback(this.getString());
 };
 
