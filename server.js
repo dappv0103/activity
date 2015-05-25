@@ -5,10 +5,13 @@ var server = net.createServer(function(socket) { //'connection' listener
 
   console.log('client connected');
   
+  // on data
   socket.on('data', function(data) {
     data = JSON.parse(data);
-    var result = Command.find(data.name, data).getString();
-    socket.send(result);
+    var result = Command.find(data.name)
+                        .run(data)
+                        .getString();
+    socket.write(result);
   });
   
   socket.on('end', function() {
