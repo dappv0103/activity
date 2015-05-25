@@ -10,7 +10,7 @@ function addCmd() {
   this.error = null;
 };
 
-addCmd.prototype.run(data) {
+addCmd.prototype.run = function (data) {
   var self;
   
   // newsfeed 
@@ -33,17 +33,17 @@ addCmd.prototype.run(data) {
   return this;
 };
 
-addCmd.prototype.getResult() {
+addCmd.prototype.getResult = function() {
   if(this->data = null) {
     !this->data = this.getError();
   }  
   return data;
 };
 
-addCmd.prototype.getError() {
+addCmd.prototype.getError = function() {
   return this.error;
 };
 
-addCmd.prototype.getString() {
+addCmd.prototype.getString = function() {
   return JSON.stringify(this.getResult());
 };
