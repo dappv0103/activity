@@ -12,7 +12,7 @@ function removeCmd() {
 
 removeCmd.prototype = baseCmd;
 
-removeCmd.prototype.run  = function(data) {
+removeCmd.prototype.run  = function(data, callback) {
   Feed.remove(data);
   Notification.remove(data);
   this.data = {
