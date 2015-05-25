@@ -1,8 +1,7 @@
 var _commands = [
   'add': require('./addCmd'),
   'remove': require('/removeCmd'),
-  'find' : require('./findCmd'),
-  'cout' : require('./coutCmd'),
+  'find' : require('./findCmd')
 ];
 
 var _settings = {};
