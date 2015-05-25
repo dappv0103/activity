@@ -10,10 +10,19 @@ function addCmd() {
 
 addCmd.prototype.run(data) {
   var self;
+  
+  // newsfeed 
   User.find({
     'following': data.actor.user_id,
   }, function(err, users) {
     feed.add(users, data);
+  });
+  
+  // notification
+  User.find({
+    'notify': data.actor.user_id,
+  }, function(err, users) {
+    notification.add(users, data);
   });
   
   this.data = {
