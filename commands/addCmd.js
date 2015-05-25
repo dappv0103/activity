@@ -1,5 +1,5 @@
 var feed = require('../models/feed');
-
+var user = require('../models/user');
 module.exports = addCmd;
 
 
