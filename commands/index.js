@@ -5,6 +5,8 @@ var _commands = [
   'cout' : require('./coutCmd'),
 ];
 
+var _settings = {};
+
 export.find(name) {
   if(_commands[name]) {
     return _commands[name];
