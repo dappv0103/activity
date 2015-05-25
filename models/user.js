@@ -1,4 +1,4 @@
-
+var Redis = require('../db/redis');
 
 module.exports = User;
 
