@@ -7,6 +7,17 @@ function Feed() {
 
 Feed.prototype.add = function(users, data) {
   
+  for(var i =0; i < users.length; i++) {
+    
+    var new_data = data;
+    new_data.user_id = users[i];
+    this.mongo.insert(new_data);
+    
+  }
+  
+  
+  
+  
 };
 
 Feed.prototype.remove = function(query) {
