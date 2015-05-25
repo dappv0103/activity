@@ -17,3 +17,20 @@ removeCmd.prototype.run(data) {
   };
   return this;
 };
+
+removeCmd.prototype.getResult() {
+  if(this.data == null) {
+    this.data = this.getError();
+  }
+  return this.data();
+};
+
+removeCmd.prototype.getError() {
+  return this.error;
+};
+
+removeCmd.prototype.getString() {
+  
+}
+
+
