@@ -7,23 +7,25 @@ function feedUser() {
 }
 
 
-feedUser.prototype.user = function(user_id) {
-  this.user_id = user_id;
+feedUser.prototype.channel = function(channel) {
+  this.channel = channel;
   return this;
 }
 
-feedUser.prototype.create = function() {
+feedUser.prototype.createChannel = function(channel) {
   var self = this;
   this.collection(function(collection) {
     collection.insert({
-      user_id: user_id,
+      _version: 0,
+      new_version: true,
+      channel: channel,
       items: []
     });
   });
 }
 
 
-feedUser.prototype.add = function(data) {
+feedUser.prototype.updateVersion = function(data) {
   this.collection(function(collection) {
     collection.update();
   });
