@@ -44,7 +44,7 @@ feedUser.prototype.updateNewsfeed = function(channel, callback) {
     }
     self.collection(function(collection) {
       collection.update({channel: channel}, {feeds:_results, new_version: false}, function() {
-        return callback();
+        return callback(_results);
       });
     });
   });
