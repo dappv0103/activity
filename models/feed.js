@@ -34,7 +34,7 @@ Feed.prototype.add = function(users, data) {
 
 Feed.prototype.push = function(collection, new_data) {
   collection.insert(new_data, function(err, result) {
-    FeedItem.add(result.user_id, result);
+    FeedItem.channel(result.user_id).updateVersion();
   });
 };
 
@@ -43,8 +43,11 @@ Feed.prototype.remove = function(query) {
     collection.find(query, function(err, repies) {
       var users = [];
       for(var i =0; i < repies.length; i++) {
-        
+        FeedItem.channel(result.user_id).updateVersion();
       }
+      collection.remove(query, function() {
+        
+      });
     });
   }
 };
