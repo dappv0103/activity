@@ -6,6 +6,7 @@ module.exports = removeCmd;
 
 
 function removeCmd() {
+  if (!(this instanceof addCmd)) return new addCmd();
   this.data = null;
   this.error = null;
 };
