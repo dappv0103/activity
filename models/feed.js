@@ -1,6 +1,15 @@
 var Mongo = require('../db/mongo');
 module.exports = Feed;
 
+/**
+ * Object {user_id, verb, hash: {}}
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
+
 function Feed() {
   this.collectionName = 'newsfeed';
   this.db = Mongo.getDb();
