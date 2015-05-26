@@ -30,13 +30,13 @@ Feed.prototype.push = function(collection, new_data) {
 };
 
 Feed.prototype.remove = function(query) {
-  this.mongo.find(query, function(err,reply) {
-    reply.delete();
-  });
+  this.collection(function(collection) {
+    collection.find(query, function(remove) {
+      
+    });
+  }
 };
 
-Feed.prototype.get = function (query, callback) {
-  this.mongo.find({hash: query}, function(err, results) {
-    return callback(err, results);
-  });
+Feed.prototype.find = function (query, callback) {
+  return FeedItem.find(query, callback);
 };
