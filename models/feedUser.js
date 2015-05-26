@@ -55,11 +55,12 @@ feedUser.prototype.find = function(channel, callback) {
   this.collection(function(collection) {
     collection.findOne({channel: channel}, function(err, reply) {
       if(reply.new_version == true) {
-        self.updateNewsfeed(function(reply) {
-          return callback(reply.feeds);
+        self.updateNewsfeed(function(feeds) {
+          return callback(feeds);
         });
+      } else {
+        return callback(reply.feeds);
       }
-      
     });
   });
 }
