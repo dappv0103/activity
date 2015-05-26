@@ -18,11 +18,19 @@ Feed.prototype.add = function(users, data) {
   this.collection(function(collection) {
     for(var i =0; i < users.length; i++) {
       new_data.user_id = users[i];
+      self.push(collection, new_data);
+      
       collection.insert(new_data, function(err, result) {
         FeedItem.resetCache(result);
       });
       
     }
+  });
+};
+
+Feed.prototype.push = function(collection, new_data) {
+  collection.insert(new_data, function(err, result) {
+    FeedItem.resetCache(result);
   });
 };
 
