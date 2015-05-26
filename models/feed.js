@@ -19,7 +19,7 @@ Feed.prototype.add = function(users, data) {
     for(var i =0; i < users.length; i++) {
       new_data.user_id = users[i];
       collection.insert(new_data, function(err, result) {
-        FeedItem::resetCache(result);
+        FeedItem.resetCache(result);
       });
       
     }
