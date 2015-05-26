@@ -4,6 +4,7 @@ module.exports = Feed;
 
 
 function Feed() {
+  if (!(this instanceof Feed)) return new Feed();
   this.collectionName = 'newsfeed';
   this.db = Mongo.getDb();
 };
