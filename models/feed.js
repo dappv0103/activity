@@ -2,7 +2,14 @@ var Mongo = require('../db/mongo');
 module.exports = Feed;
 
 function Feed() {
-  this.mongo = Mongo.collenction('newsfeed');
+  this.collectionName = 'newsfeed';
+  this.db = Mongo.getDb();
+};
+
+Feed.prototype.collection = function(callback) {
+  this.db.collection(this.collectionName, function(err, collection) {
+    return callback(collection);
+  });
 };
 
 Feed.prototype.add = function(users, data) {
