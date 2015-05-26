@@ -2,8 +2,10 @@
 
 
 
+
 function feedUser() {
   this.user_id = null;
+  this.max_newfeed = 100;
 }
 
 
@@ -21,6 +23,12 @@ feedUser.prototype.createChannel = function(channel) {
       channel: channel,
       items: []
     });
+  });
+};
+
+feedUser.prototype.updateNewsfeed = function(channel) {
+  Feed::findByChannel(channel, function(err, results) {
+    
   });
 }
 
