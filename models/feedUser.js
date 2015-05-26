@@ -27,10 +27,28 @@ feedUser.prototype.createChannel = function(channel) {
   });
 };
 
-feedUser.prototype.updateNewsfeed = function(channel) {
-  Feed::findByChannel(channel, function(err, results) {
-    
+feedUser.prototype.updateNewsfeed = function(channel, callback) {
+  
+  this.findByChannel(channel, function(err, reply) {
+    if(reply.new_version == true) {
+      var _results = [];
+      Feed.findByChannel(channel, function(err, results) {
+        for(var i = 0; i < results.length; i++) {
+          var hash =  results[i].object.id +':'+ results[i].object.type;
+          if(!_results[hash]) {
+            _results[hash] = results[i];
+            _results[hash].user_receivers = [results[i].user];
+          } else {
+            if(_results[hash].verb === results[i].verb) {
+              _results[hash].user_receivers.push(results[i].user);
+            }
+          }
+        }
+      });
+    }
   });
+  
+ 
 }
 
 
