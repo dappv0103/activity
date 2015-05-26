@@ -50,6 +50,14 @@ feedUser.prototype.updateNewsfeed = function(channel, callback) {
   });
 }
 
+feedUser.prototype.find(channel, callback) {
+  this.collection(function(collection) {
+    collection.find({channel: channel}, function(err, replies) {
+      return callback(replies);
+    });
+  });
+}
+
 feedUser.prototype.updateVersion = function(channel) {
   this.collection(function(collection) {
     collection.update({channel:channel}, {new_version: true});
