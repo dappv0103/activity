@@ -6,6 +6,7 @@ module.exports = findCmd;
 
 
 function findCmd() {
+  if (!(this instanceof addCmd)) return new addCmd();
   this.data = null;
   this.error = null;
 };
