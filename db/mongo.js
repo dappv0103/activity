@@ -14,3 +14,7 @@ Mongo.prototype.connect = function(callback) {
     callback(db);
   });
 };
+
+Mongo.prototype.insert = function() {
+  
+}
