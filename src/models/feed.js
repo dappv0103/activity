@@ -34,7 +34,7 @@ Feed.prototype.push = function(collection, new_data) {
 Feed.prototype.remove = function(query) {
   this.collection(function(collection) {
     collection.find(query, function(err, repies) {
-      collection.remove(query, function() {
+      collection.remove(query, function(err, cout) {
         for(var i =0; i < repies.length; i++) {
           feedUser.channel(result.user_id).updateVersion();
         }
