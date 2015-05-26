@@ -1,1 +1,4 @@
+
+require('./configs');
+
 require('./src');
