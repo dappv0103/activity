@@ -28,7 +28,7 @@ feedUser.prototype.createChannel = function(channel) {
 };
 
 feedUser.prototype.updateNewsfeed = function(channel, callback) {
-  
+  var self = this;
   this.findByChannel(channel, function(err, reply) {
     if(reply.new_version == true) {
       var _results = [];
@@ -44,10 +44,12 @@ feedUser.prototype.updateNewsfeed = function(channel, callback) {
             }
           }
         }
+        return callback(_results);
       });
     }
   });
 }
+
 feedUser.prototype.updateVersion = function(channel) {
   this.collection(function(collection) {
     collection.update({channel:channel}, {new_version: true});
