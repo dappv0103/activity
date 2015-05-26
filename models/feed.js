@@ -1,4 +1,5 @@
 var Mongo = require('../db/mongo');
+var feedUser = require('./feedUser');
 module.exports = Feed;
 
 /**
@@ -34,7 +35,7 @@ Feed.prototype.add = function(users, data) {
 
 Feed.prototype.push = function(collection, new_data) {
   collection.insert(new_data, function(err, result) {
-    FeedItem.channel(result.user_id).updateVersion();
+    feedUser.channel(result.user_id).updateVersion();
   });
 };
 
@@ -43,7 +44,7 @@ Feed.prototype.remove = function(query) {
     collection.find(query, function(err, repies) {
       collection.remove(query, function() {
         for(var i =0; i < repies.length; i++) {
-          FeedItem.channel(result.user_id).updateVersion();
+          feedUser.channel(result.user_id).updateVersion();
         }
       });
     });
@@ -51,5 +52,5 @@ Feed.prototype.remove = function(query) {
 };
 
 Feed.prototype.find = function (query, callback) {
-  return FeedItem.find(query, callback);
+  return feedUser.find(query, callback);
 };
