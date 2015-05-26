@@ -41,12 +41,10 @@ Feed.prototype.push = function(collection, new_data) {
 Feed.prototype.remove = function(query) {
   this.collection(function(collection) {
     collection.find(query, function(err, repies) {
-      var users = [];
-      for(var i =0; i < repies.length; i++) {
-        FeedItem.channel(result.user_id).updateVersion();
-      }
       collection.remove(query, function() {
-        
+        for(var i =0; i < repies.length; i++) {
+          FeedItem.channel(result.user_id).updateVersion();
+        }
       });
     });
   }
