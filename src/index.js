@@ -14,7 +14,10 @@ var server = net.createServer(function(socket) { //'connection' listener
       cmd.run(data, function(result) {
         socket.write(result);
       });
-    };
+    } else {
+      socket.write('not ok');
+    }
+    
   });
   
   socket.on('end', function() {
