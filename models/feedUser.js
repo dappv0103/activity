@@ -47,11 +47,7 @@ feedUser.prototype.updateNewsfeed = function(channel, callback) {
       });
     }
   });
-  
- 
 }
-
-
 feedUser.prototype.updateVersion = function(channel) {
   this.collection(function(collection) {
     collection.update({channel:channel}, {new_version: true});
