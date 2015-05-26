@@ -5,6 +5,7 @@ module.exports = User;
 
 function User() {
   if (!(this instanceof User)) return new User();
+  this.redis = Redis.client;
 };
 
 User.prototype.find = function(query, callback) {
