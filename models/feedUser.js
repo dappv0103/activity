@@ -5,7 +5,8 @@
 
 function feedUser() {
   this.user_id = null;
-  this.max_newfeed = 100;
+  this.max_newfeed = 150;
+  this.max_newsfeed_expired = 60*60*24*30;
 }
 
 
