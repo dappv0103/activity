@@ -4,7 +4,7 @@ module.exports = User;
 
 
 function User() {
-  
+  if (!(this instanceof User)) return new User();
 };
 
 User.prototype.find = function(query, callback) {
