@@ -14,8 +14,7 @@ function addCmd() {
 addCmd.prototype = baseCmd;
 
 addCmd.prototype.run = function (data, callback) {
-  var self;
-  
+
   // newsfeed 
   User.find({
     'following': data.actor.user_id,
