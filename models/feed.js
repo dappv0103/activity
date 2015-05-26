@@ -18,8 +18,10 @@ Feed.prototype.add = function(users, data) {
   this.collection(function(collection) {
     for(var i =0; i < users.length; i++) {
       new_data.user_id = users[i];
-      collection.insert(new_data);
-      self.cleanCache(users[i]);
+      collection.insert(new_data, function(err, result) {
+        FeedItem::resetCache(result);
+      });
+      
     }
   });
 };
