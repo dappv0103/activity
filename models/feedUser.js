@@ -25,9 +25,9 @@ feedUser.prototype.createChannel = function(channel) {
 }
 
 
-feedUser.prototype.updateVersion = function(data) {
+feedUser.prototype.updateVersion = function(channel) {
   this.collection(function(collection) {
-    collection.update();
+    collection.update({channel:channel}, {new_version: true});
   });
 }
 
