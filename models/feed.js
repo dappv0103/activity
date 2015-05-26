@@ -34,14 +34,17 @@ Feed.prototype.add = function(users, data) {
 
 Feed.prototype.push = function(collection, new_data) {
   collection.insert(new_data, function(err, result) {
-    FeedItem.resetCache(result);
+    FeedItem.add(result.user_id, result);
   });
 };
 
 Feed.prototype.remove = function(query) {
   this.collection(function(collection) {
-    collection.find(query, function(remove) {
-      
+    collection.find(query, function(err, repies) {
+      var users = [];
+      for(var i =0; i < repies.length; i++) {
+        
+      }
     });
   }
 };
