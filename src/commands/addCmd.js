@@ -7,6 +7,7 @@ module.exports = addCmd;
 
 
 function addCmd() {
+  if (!(this instanceof addCmd)) return new addCmd();
   this.data = null;
   this.error = null;
 };
