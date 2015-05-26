@@ -2,14 +2,6 @@ var Mongo = require('../db/mongo');
 var feedUser = require('./feedUser');
 module.exports = Feed;
 
-/**
- * Object {user_id, verb, hash: {}}
- * 
- * 
- * 
- * 
- * 
- */
 
 function Feed() {
   this.collectionName = 'newsfeed';
