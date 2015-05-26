@@ -3,7 +3,7 @@ var assert = require('assert');
 module.exports  = Mongo;
 
 
-function Mongo(url) {
+function Mongo() {
   this.url = url;
   this.mongoClient = mongodb.MongoClient;
 };
