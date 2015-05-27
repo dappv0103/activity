@@ -1,13 +1,4 @@
-var Db = require('mongodb').Db,
-    MongoClient = require('mongodb').MongoClient,
-    Server = require('mongodb').Server,
-    ReplSetServers = require('mongodb').ReplSetServers,
-    ObjectID = require('mongodb').ObjectID,
-    Binary = require('mongodb').Binary,
-    GridStore = require('mongodb').GridStore,
-    Grid = require('mongodb').Grid,
-    Code = require('mongodb').Code,
-    BSON = require('mongodb').pure().BSON,
+var MongoClient = require('mongodb').MongoClient,
     assert = require('assert');
     
 module.exports  = Mongo;
@@ -20,7 +11,7 @@ function Mongo(url) {
 };
 
 Mongo.prototype.connect = function(url) {
-  this.db = this.MongoClient.connect(url);
+  this.db = MongoClient.connect(url);
 };
 
 Mongo.prototype.getDb = function() {
