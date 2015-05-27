@@ -32,18 +32,10 @@ Feed.prototype.push = function(collection, new_data) {
   });
 };
 
-Feed.prototype.remove = function(query) {
-  this.collection(function(collection) {
-    collection.find(query, function(err, repies) {
-      collection.remove(query, function(err, cout) {
-        for(var i =0; i < repies.length; i++) {
-          feedUser.channel(result.user_id).updateVersion();
-        }
-      });
-    });
-  }
+Feed.prototype.remove = function() {
+  return channel.channel(this.channel).remove(channel.NEWS_FEED);
 };
 
-Feed.prototype.find = function (query, callback) {
-  return channel.channel().find(query, callback);
+Feed.prototype.find = function (callback) {
+  return channel.channel(this.channel).find(channel.NEWS_FEED, callback);
 };
