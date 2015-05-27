@@ -9,6 +9,9 @@ function Channel() {
 
 Channel.prototype = model;
 
+Channel.NEWS_FEED = 1;
+Channel.NOTIFICATION = 2;
+
 Channel.prototype.add = function(name) {
 	
   var channel = new Channel();
