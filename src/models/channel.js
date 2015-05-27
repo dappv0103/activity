@@ -9,8 +9,8 @@ function Channel() {
 
 Channel.prototype = model;
 
-Channel.NEWS_FEED = 1;
-Channel.NOTIFICATION = 2;
+Channel.NEWS_FEED = 'feeds';
+Channel.NOTIFICATION = 'notifications';
 
 Channel.prototype.add = function(name) {
 	
