@@ -26,10 +26,10 @@ feedUser.prototype.createChannel = function() {
   });
 };
 
-feedUser.prototype.updateNewsfeed = function(channel, callback) {
+feedUser.prototype.updateNewsfeed = function(callback) {
   var self = this;
   var _results = [];
-  Feed.findByChannel(channel, function(err, results) {
+  Feed.findByChannel(self.channel, function(err, results) {
     for(var i = 0; i < results.length; i++) {
       var hash =  results[i].object.id +':'+ results[i].object.type;
       if(!_results[hash]) {
@@ -42,14 +42,14 @@ feedUser.prototype.updateNewsfeed = function(channel, callback) {
       }
     }
     self.collection(function(collection) {
-      collection.update({channel: channel}, {feeds:_results, new_version: false}, function() {
+      collection.update({channel: self.channel}, {feeds:_results, new_version: false}, function() {
         return callback(_results);
       });
     });
   });
 }
 
-feedUser.prototype.find = function(channel, callback) {
+feedUser.prototype.find = function(callback) {
   var self = this;
   this.collection(function(collection) {
     collection.findOne({channel: channel}, function(err, reply) {
@@ -64,9 +64,10 @@ feedUser.prototype.find = function(channel, callback) {
   });
 }
 
-feedUser.prototype.updateVersion = function(channel) {
+feedUser.prototype.updateVersion = function() {
+  var self = this;
   this.collection(function(collection) {
-    collection.update({channel:channel}, {new_version: true});
+    collection.update({channel:self.channel}, {new_version: true});
   });
 }
 
