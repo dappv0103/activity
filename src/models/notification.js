@@ -17,14 +17,14 @@ Notification.prototype.add = function(users, data) {
   var new_data = data;
   for(var i =0; i < users.length; i++) {
     new_data.user_id = users[i];
-    this.channel.add(Channel.NOTIFICATION, new_data);
+    this.channel().add(Channel.NOTIFICATION, new_data);
   }
 };
 
 Notification.prototype.remove = function() {
-  return channel.channel(this.channel).remove(Channel.NOTIFICATION);
+  return this.channel().remove(Channel.NOTIFICATION);
 };
 
 Notification.prototype.find = function (callback) {
-  return channel.channel(this.channel).find(Channel.NOTIFICATION, callback);
+  return this.channel().find(Channel.NOTIFICATION, callback);
 };
