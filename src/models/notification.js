@@ -1,5 +1,5 @@
 var Channel = require('./channel');
-module.exports = Feed;
+module.exports = Notification;
 
 
 function Notification() {
