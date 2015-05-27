@@ -1,3 +1,4 @@
+var model = require('../db/mongo/model');
 
 function Channel() {
    this.id = null;
@@ -5,6 +6,8 @@ function Channel() {
    this.feeds = [];
    this.notifications = [];
 }
+
+Channel.prototype = model;
 
 Channel.prototype.add = function(name) {
 	
