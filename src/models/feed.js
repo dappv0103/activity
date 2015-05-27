@@ -45,5 +45,5 @@ Feed.prototype.remove = function(query) {
 };
 
 Feed.prototype.find = function (query, callback) {
-  return feedUser.find(query, callback);
+  return channel.channel().find(query, callback);
 };
