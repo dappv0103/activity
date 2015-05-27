@@ -9,16 +9,14 @@ function User() {
 };
 
 User.prototype.find = function(query, callback) {
+  var key = '';
   if(var user = query.following) {
-    // newsfeed
-    this.redis.zrange('following_user' + user, function(err, reply) {
-      return callback(reply);
-    });
+    key = 'following_user:' + user;
   } else if(var user = query.notify) {
-    
-    // notification
-    this.redis.zrange('notification_from_' + user, function(err, reply) {
-      return callback(reply);
-    });
+    key = 'notification_from_user:' + user;
   };
+  
+  this.redis.zrange(key, function(err, reply) {
+    return callback(reply);
+  });
 }
