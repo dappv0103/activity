@@ -16,7 +16,6 @@ module.exports  = Mongo;
 function Mongo() {
   if (!(this instanceof Mongo)) return new Mongo();
   this.url = url;
-  this.mongoClient = mongodb.MongoClient;
 };
 
 Mongo.prototype.connect = function(callback) {
