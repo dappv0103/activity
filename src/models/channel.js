@@ -7,6 +7,11 @@ function Channel() {
    this.notifications = [];
 }
 
+Channel.prototype.channel = function(name) {
+   this.channel = name;
+   return this;	
+}
+
 Channel.prototype = model;
 
 Channel.NEWS_FEED = 'feeds';
