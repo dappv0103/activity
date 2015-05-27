@@ -5,7 +5,7 @@
 
 function feedUser() {
   if (!(this instanceof feedUser)) return new feedUser();
-  this.user_id = null;
+  this.channel = null;
   this.max_newfeed = 150;
   this.max_newsfeed_expired = 60*60*24*30;
 }
@@ -16,13 +16,13 @@ feedUser.prototype.channel = function(channel) {
   return this;
 }
 
-feedUser.prototype.createChannel = function(channel) {
+feedUser.prototype.createChannel = function() {
   var self = this;
   this.collection(function(collection) {
     collection.insert({
       _version: 0,
       new_version: true,
-      channel: channel,
+      channel: self.channel,
       items: []
     });
   });
