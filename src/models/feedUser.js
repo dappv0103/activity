@@ -1,7 +1,5 @@
-
-
-
-
+var mongo = require('../db/mongo');
+module.exports = feedUser;
 
 function feedUser() {
   if (!(this instanceof feedUser)) return new feedUser();
