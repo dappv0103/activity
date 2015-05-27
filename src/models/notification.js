@@ -1,17 +1,30 @@
-var Mongo = require('../db/mongo');
-module.exports = Notification;
+var Channel = require('./channel');
+module.exports = Feed;
+
 
 function Notification() {
   if (!(this instanceof Notification)) return new Notification();
-  this.mongo = Mongo.collenction('notification');
 };
+
+Notification.prototype.channel = function(channel) {
+  return Channel.channel(channel);
+}
+
+
 
 Notification.prototype.add = function(users, data) {
-  
+  var self = this;
+  var new_data = data;
+  for(var i =0; i < users.length; i++) {
+    new_data.user_id = users[i];
+    this.channel.add(Channel.NOTIFICATION, new_data);
+  }
 };
 
-Notification.prototype.get = function (query, callback) {
-  this.mongo.find({hash: query}, function(err, results) {
-    return callback(err, results);
-  });
+Notification.prototype.remove = function() {
+  return channel.channel(this.channel).remove(Channel.NOTIFICATION);
+};
+
+Notification.prototype.find = function (callback) {
+  return channel.channel(this.channel).find(Channel.NOTIFICATION, callback);
 };
