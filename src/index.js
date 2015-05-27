@@ -2,6 +2,8 @@ var net = require('net');
 var command = require('./commands');
 var mongo = require('./db/mongo')('mongodb://localhost:27017');
 var redis = require('./db/redis')(6379 ,'localhost');
+
+
 var server = net.createServer(function(socket) { //'connection' listener
 
 
