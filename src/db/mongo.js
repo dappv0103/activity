@@ -16,6 +16,4 @@ Mongo.prototype.connect = function(callback) {
   });
 };
 
-Mongo.prototype.insert = function() {
-  
-}
+Mongo.prototype.insert;
