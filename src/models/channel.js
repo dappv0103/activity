@@ -1,37 +1,28 @@
 
 /*
-
 var channel =  Channel.channel(10);
 
-// Add notification
 channel.add({
 	
-	// Gửi đến danh sách người
 	to_id: [{ 
 			id: 10,
 			is_notification: 11
 	}],
 
-	// Hanh dong
 	verb: "like",
 	
-	// Thong tin nguoi dang
 	actor: 10,
 	
-	// Thong tin doi tuong
 	object: 'content:10',
 	
-	// Ranking object
 	ranking: 10,
 });
 
-// Remove Notification
 channel.remove('notification', {
 	verb:10,
 	object: "content:10"
 });
 
-// Lay danh sach notification;
 channel.get('notification');
 */
 
