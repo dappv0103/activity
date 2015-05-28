@@ -43,8 +43,6 @@ Channel.prototype.channel = function(name) {
  * @return boolean
  */
 Channel.prototype.add = function(activity) {
-	var _results = [];
-	var actor;
 	var users = activity.to_id;
 	delete activity.to_id;
 	for(var i = 0; i < users.length; i++) {
