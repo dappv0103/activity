@@ -59,8 +59,10 @@ Channel.prototype.insertOrUpdate = function(activity) {
 	Redis.get(activity.hash, function(err, reply) {
 		if(reply) {
 			reply.actors.push = activity.actor;
-			Redis.set(activity.hash, activity);
+		} else {
+			reply = activity;
 		}
+		Redis.set(activity.hash, reply);
 	});
 }
 
