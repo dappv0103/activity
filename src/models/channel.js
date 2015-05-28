@@ -29,6 +29,7 @@ channel.get('notification');
 
 function Channel() {
 	this.channel = null;
+	this.keyPrefix = "Channel:";
 }
 
 // Connect to channel
