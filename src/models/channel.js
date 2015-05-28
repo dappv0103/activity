@@ -71,6 +71,10 @@ Channel.prototype.insertOrUpdate = function(activity) {
 	});
 }
 
+Channel.prototype.cache = function(key, value) {
+	
+}
+
 /**
  * Hash Object
  * @param Object Activity
