@@ -31,7 +31,7 @@ function Channel() {
 	this.channel = null;
 }
 
-// Channel
+// Connect to channel
 Channel.prototype.channel = function(name) {
 	this.channel = name;
 	return this;
@@ -39,6 +39,8 @@ Channel.prototype.channel = function(name) {
 
 /**
  * Add newsfeed or update
+ * @param Object activity
+ * @return boolean
  */
 Channel.prototype.add = function(activity) {
 	var _results = [];
@@ -54,7 +56,11 @@ Channel.prototype.add = function(activity) {
 	
 }
 
-
+/**
+ * Insert or update
+ * @param Object activity
+ * @return boolean
+ */
 Channel.prototype.insertOrUpdate = function(activity) {
 	Redis.get(activity.hash, function(err, reply) {
 		if(reply) {
@@ -75,11 +81,13 @@ Channel.prototype._buildHash = function(activity) {
 	return activity.to_id +':'+ activity.object;
 }
 
+/**
+ * Hash Object
+ * @param Object Activity
+ * @return Hash
+ */
 Channel.prototype.set = function(field, data) {
 	this[field] = data;
 	return this.update();
 }
 
-Channel.prototype.get = function(field) {
-	return this.find(field);
-}
