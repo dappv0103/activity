@@ -21,8 +21,8 @@ Feed.prototype.add = function(users, data) {
   }
 };
 
-Feed.prototype.remove = function() {
-  return channel.channel(this.channel).remove(Channel.NEWS_FEED);
+Feed.prototype.remove = function(activity) {
+  return this.channel().remove(Channel.NEWS_FEED, activity);
 };
 
 Feed.prototype.find = function (callback) {
