@@ -26,5 +26,5 @@ Feed.prototype.remove = function(activity) {
 };
 
 Feed.prototype.find = function (callback) {
-  return channel.channel(this.channel).find(Channel.NEWS_FEED, callback);
+  return this.channel().find(Channel.NEWS_FEED, callback);
 };
