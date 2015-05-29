@@ -79,12 +79,26 @@ Channel.prototype.insertOrUpdate = function(type, activity) {
 	}
 }
 
+Channel.prototype.insertOrUpdateNotification = function(activity) {
+	var self = this;
+	var hash = 'notification:' + activity.hash;
+	this.getCacheItem(hash, function(err, reply) {
+		if(!reply) {
+			reply = activity;
+		} else {
+			reply.actor.total += 1;
+			reply.actor._new.push(activity.actor);
+		}
+		this.setCacheItem(hash, activity);
+	});
+}
+
 Channel.prototype.setCacheItem = function(hash, value) {
-	Redis.set(hash, value);
+	Redis.set(this.keyPrefix +':'+hash, value);
 }
 
 Channel.prototype.getCacheItem = function(hash, callback) {
-	Redis.get(hash, callback);
+	Redis.get(this.keyPrefix +':'+hash, callback);
 }
 
 /**
