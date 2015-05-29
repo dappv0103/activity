@@ -110,13 +110,3 @@ Channel.prototype._buildHash = function(activity) {
 	return activity.to_id +':'+ activity.object;
 }
 
-/**
- * Hash Object
- * @param Object Activity
- * @return Hash
- */
-Channel.prototype.set = function(field, data) {
-	this[field] = data;
-	return this.update();
-}
-
