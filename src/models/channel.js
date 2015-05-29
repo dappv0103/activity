@@ -6,7 +6,8 @@ channel.add({
 	
 	to_id: [{ 
 			id: 10,
-			is_notification: 11
+			is_viewer_notification: true,
+			is_viewer_newsfeed: true
 	}],
 
 	verb: "like",
@@ -70,15 +71,12 @@ Channel.prototype.add = function(activity) {
  * @param Object activity
  * @return boolean
  */
-Channel.prototype.insertOrUpdate = function(activity) {
-	Redis.get(activity.hash, function(err, reply) {
-		if(reply) {
-			reply.actors.push = activity.actor;
-		} else {
-			reply = activity;
-		}
-		Redis.set(activity.hash, reply);
-	});
+Channel.prototype.insertOrUpdate = function(type, activity) {
+	if(type === 'notification') {
+		this.insertOrUpdateNotification(activity);
+	} else {
+		this.insertOrUpdateNewsfeed(activity);
+	}
 }
 
 Channel.prototype.cache = function(key, value) {
