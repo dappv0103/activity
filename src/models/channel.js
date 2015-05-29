@@ -46,11 +46,21 @@ Channel.prototype.channel = function(name) {
 Channel.prototype.add = function(activity) {
 	var users = activity.to_id;
 	delete activity.to_id;
+	var 
 	for(var i = 0; i < users.length; i++) {
 		activity.to_id = users[i].id;
-		activity.is_notification = users[i].is_notification;
 		activity.hash = this._buildHash(activity);
-		this.insertOrUpdate(activity);
+		
+		// insert or update notification
+		if(users[i].is_viewer_notification === true) {
+			this.insertOrUpdate('notification', activity);
+		}
+		
+		// insert or update newsfeed
+		if(users[i].is_viewer_newsfeed === true) {
+			this.insertOrUpdate('newsfeed', activity);
+		}
+		
 	}
 	
 }
