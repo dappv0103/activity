@@ -79,8 +79,12 @@ Channel.prototype.insertOrUpdate = function(type, activity) {
 	}
 }
 
-Channel.prototype.cache = function(key, value) {
-	
+Channel.prototype.setCacheItem = function(hash, value) {
+	Redis.set(hash, value);
+}
+
+Channel.prototype.getCacheItem = function(hash, callback) {
+	Redis.get(hash, callback);
 }
 
 /**
