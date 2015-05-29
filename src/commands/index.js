@@ -1,12 +1,11 @@
-var _commands = [
-  'add': require('./addCmd'),
-  'remove': require('/removeCmd'),
-  'find' : require('./findCmd')
-];
+var _commands = [];
 
-var _settings = {};
+_commands['add'] = require('./addCmd');
+_commands['remove'] = require('./removeCmd');
+_commands['find'] = require('./findCmd');
 
-export.find(name) {
+
+exports.find = function(name) {
   if(_commands[name]) {
     return _commands[name];
   }

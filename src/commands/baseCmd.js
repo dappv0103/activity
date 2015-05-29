@@ -6,17 +6,26 @@ function baseCmd() {
   this.error = null;
 }
 
-baseCmd.prototype.getResult = function() {
-  if(this->data = null) {
-    !this->data = this.getError();
+baseCmd.prototype.getData = function() {
+  if(this.data == null) {
+    this.data = this.getError();
   }  
-  return data;
+  return this.data;
 };
 
 baseCmd.prototype.getError = function() {
   return this.error;
 };
 
+baseCmd.prototype.setData = function(data) {
+  return this.data = data;
+}
+
+baseCmd.prototype.setError = function(error) {
+  return this.error = error;
+};
+
+
 baseCmd.prototype.getString = function() {
-  return JSON.stringify(this.getResult());
+  return JSON.stringify(this.getData());
 };

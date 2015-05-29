@@ -1,12 +1,11 @@
-var Feed = require('../models/feed');
-var Notification = require('../models/notification');
+var Channel = require('../models/channel');
 var baseCmd = require('./baseCmd');
 
 module.exports = findCmd;
 
 
 function findCmd() {
-  if (!(this instanceof addCmd)) return new addCmd();
+  if (!(this instanceof findCmd)) return new findCmd();
   this.data = null;
   this.error = null;
 };
@@ -16,13 +15,14 @@ findCmd.prototype = baseCmd;
 findCmd.prototype.run = function (data, callback) {
   var self = this;
   if(data.type === 'feed') {
-    delete data.type;
-    Feed.get(data, function(results) {
+    
+    Channel.channel(data.user_id).getNewsfeed(function(results) {
       self.callCmd(results, callback);
     });
-  } else(data.type === 'notify') {
-    delete data.type;
-    Notification.get(data, function(results) {
+    
+  } else if(data.type === 'notify') {
+    
+    Channel.channel(data.user_id).getNotification(function(results) {
       self.callCmd(results, callback);
     });
   }
@@ -30,6 +30,6 @@ findCmd.prototype.run = function (data, callback) {
 };
 
 findCmd.prototype.callCmd = function(results, callback) {
-  self.data = results;
-  callback(self.getString());
+  this.data = results;
+  callback(this.getString());
 };
