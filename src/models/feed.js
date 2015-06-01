@@ -18,13 +18,20 @@ Feed.prototype.open = function(name) {
 
 
 Feed.prototype.add = function(data) {
+  
   var self = this;
+  
+  // add newsfeed
   var keyPrefix = this.keyPrefix+':'+this._channelName;
   redis.zadd(key, data.rank, data.object);
+  
+  // actors
   key = keyPrefix + ':' + data.object + ':' + data.verb;
   redis.zadd(key, Date.now(), data.actor);
-  key +=
-  redis.zadd()
+  
+  // list verb
+  key = keyPrefix + ':' + data.object + ':verbs';
+  redis.zadd(key, Date.now(), data.verb);
 }
 
 Feed.prototype._addActivity = function(data) {
