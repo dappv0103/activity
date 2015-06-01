@@ -18,9 +18,13 @@ Feed.prototype.open = function(name) {
 
 
 Feed.prototype.add = function(data) {
-  var hash = ';';
+  var self = this;
+  var key = this.keyPrefix+':'+this._channelName;
+  redis.zadd(key, data.rank, data.object);
+  key +=':' + data.object;
+  redis.zadd(key, Date.now(), data.actor);
 }
 
-Feed.prototype._addItem = function(data) {
+Feed.prototype._addActivity = function(data) {
   
 }
