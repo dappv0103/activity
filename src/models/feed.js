@@ -24,10 +24,12 @@ Feed.prototype.add = function(data) {
   // add newsfeed
   var keyPrefix = this.keyPrefix+':'+this._channelName;
   redis.zadd(keyPrefix, data.rank, data.object);
-  FeedActivity.add({
-    user_id: data.to_id,
-    object: 
-  });
+  // actors
+  key = keyPrefix + ':' + data.object + ':' + data.verb;
+  redis.zadd(key, Date.now(), data.actor);
+  // list verb
+  key = keyPrefix + ':' + data.object + ':verbs';
+  redis.zadd(key, Date.now(), data.verb);
 }
 
 Feed.prototype.find = function(condition) {
