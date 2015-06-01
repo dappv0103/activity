@@ -40,7 +40,7 @@ function Channel() {
 /**
  * Connect channel
  */
-Channel.prototype.channel = function(name) {
+Channel.prototype.open = function(name) {
 	this.channel = name;
 	return this;
 }
@@ -50,10 +50,11 @@ Channel.prototype.channel = function(name) {
  * @param Object activity
  * @return boolean
  */
-Channel.prototype.add = function(activity) {
+Channel.prototype.add = function(data) {
 	var users = activity.to_id;
 	delete activity.to_id;
 	for(var i = 0; i < users.length; i++) {
+		
 		activity.to_id = users[i].id;
 		activity.hash = this._buildHash(activity);
 		
@@ -93,13 +94,11 @@ Channel.prototype.insertOrUpdateNotification = function(activity) {
 	var hash = 'notification:' + activity.hash;
 	
 	this.getCacheItem(hash, function(err, reply) {
+		var actor = activity.actor;
 		if(!reply) {
-			reply = activity;
-		} else {
-			reply.actor.total += 1;
-			reply.actor._new.push(activity.actor);
+			self.setCacheItem(hash, activity);
 		}
-		self.setCacheItem(hash, activity);
+		
 		self.channel(activity.to_id).addNotificationItem(hash);
 	});
 }
@@ -111,13 +110,7 @@ Channel.prototype.insertOrUpdateNewsfeed = function(activity) {
 	var self = this;
 	var hash = 'newsfeed:' + activity.hash;
 	this.getCacheItem(hash, function(err, reply) {
-		if(!reply) {
-			reply = activity;
-		} else {
-			reply.actor.total += 1;
-			reply.actor._new.push(activity.actor);
-		}
-		self.setCacheItem(hash, activity);
+		self.
 		self.channel(activity.to_id).addNewsfeedItem(hash);
 	});
 }

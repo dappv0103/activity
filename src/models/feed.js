@@ -4,27 +4,23 @@ module.exports = Feed;
 
 function Feed() {
   if (!(this instanceof Feed)) return new Feed();
+  this._channelName = null;
+  this.keyPrefix = 'Newsfeed#_';
 };
 
-Feed.prototype.channel = function(channel) {
-  return Channel.channel(channel);
+/**
+ * Open
+ */
+Feed.prototype.open = function(name) {
+  this._channelName = name;
+  return this;
 }
 
 
+Feed.prototype.add = function(data) {
+  var hash = ';';
+}
 
-Feed.prototype.add = function(users, data) {
-  var self = this;
-  var new_data = data;
-  for(var i =0; i < users.length; i++) {
-    new_data.user_id = users[i];
-    this.channel.add(Channel.NEWS_FEED, new_data);
-  }
-};
-
-Feed.prototype.remove = function(activity) {
-  return this.channel().remove(Channel.NEWS_FEED, activity);
-};
-
-Feed.prototype.find = function (callback) {
-  return this.channel().find(Channel.NEWS_FEED, callback);
-};
+Feed.prototype._addItem = function(data) {
+  
+}
