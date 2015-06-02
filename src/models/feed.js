@@ -98,8 +98,7 @@ feedSchema.methods.sendNotification = function(users) {
     Notification.create({
       to_id: users[i],
       verb: 'create',
-      feed_id: this._id,
-      ranking: this.ranking
+      feed_id: this._id
     });
   }
 }
