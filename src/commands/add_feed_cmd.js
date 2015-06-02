@@ -27,8 +27,6 @@ addCmd.prototype.run = function (data, callback) {
     privacy: data.privacy
   }, function(err, doct) {
     
-    // List user following from user or group
-    var users = [1,2];
     // Khởi tạo newsfeed đến vị trí
     doct.createNewsfeedPosition();
   });
