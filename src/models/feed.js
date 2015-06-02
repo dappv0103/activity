@@ -113,6 +113,18 @@ feedSchema.methods.sendNotification = function(users) {
 }
 
 feedSchema.statics.activity = function(verb, data) {
- 
+  this.findOne({object: data.object}, function(err, doct) {
+   
+    // gửi bảng tin đến những người đang theo dõi
+    var users = [1, 2, 3];
+    for(var i =0; i <= users.length; i++) {
+     FeedActivity.create({
+      to_id: users[i],
+      verb: verb,
+      actors: data.actor,
+      feed_id: doct._id
+     });
+    }
+  });
 }
 mongoose.model('Feed', feedSchema);
