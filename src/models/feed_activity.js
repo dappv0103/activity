@@ -3,14 +3,10 @@ var Schema = mongoose.Schema;
 
 
 /**
- * @var string _id
- * @var object object
- * @var integer created_by
- * @var string position
- * @var object meta
- * @var integer ranking
- * @var Date created_at
- * @var Date updated_at
+ * @var Number to_id
+ * @var Array actors
+ * @var Mixed verb
+ * @var ObjectId feed_id
  * @var integer privacy
  */
  
@@ -19,7 +15,7 @@ var Schema = mongoose.Schema;
 
 var feedActivity = new Schema({
   to_id: Number,
-  actor:  Number,
+  actors:  Array,
   verb:   Schema.Types.Mixed,,
   feed_id: Schema.Types.ObjectId,
   created_time: { type: Date, default: Date.now },
