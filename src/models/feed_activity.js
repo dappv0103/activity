@@ -26,4 +26,15 @@ var feedActivity = new Schema({
 });
 
 
+feedActivity.methods.sendNotification = function(users) {
+ for(var i = 0; i <= users.length; i++) {
+  Notification.createOrInsert({
+   to_id: users[i],
+   actors:this.actor,
+   verb: this.verb,
+   feed_id: this.id,
+  })
+ }
+}
+
 mongoose.model('FeedActivity', feedActivity);
