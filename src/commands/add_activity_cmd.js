@@ -13,9 +13,15 @@ function addActivityCmd() {
 
 addActivityCmd.prototype = baseCmd;
 
+
 addActivityCmd.prototype.run = function (data, callback) {
   var self = this;
 
+  FeedActivity.create({
+    
+  }, function(err, doct) {
+    doct.send();
+  });
   
   this.data = {
     result: 'ok'
