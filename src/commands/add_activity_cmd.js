@@ -1,10 +1,25 @@
+var mongoose = require('mongoose');
+var Feed = mongoose.model('FeedActivity');
+var baseCmd = require('./baseCmd');
 
+module.exports = addActivityCmd;
 
 
 function addActivityCmd() {
-  
-}
+  if (!(this instanceof addActivityCmd)) return new addActivityCmd();
+  this.data = null;
+  this.error = null;
+};
 
-addActivityCmd.prototype.run = function(data, callback) {
+addActivityCmd.prototype = baseCmd;
+
+addActivityCmd.prototype.run = function (data, callback) {
+  var self = this;
+
   
-}
+  this.data = {
+    result: 'ok'
+  };
+  callback(this.getString());
+};
+
