@@ -59,6 +59,12 @@ feedSchema.methods.createNewsfeedPosition = function() {
       feed_id: this._id,
       privacy: this.privacy
     });
+    
+    // Gửi bài viết đến những người đang theo dõi
+    if(this.privacy === this.P_PUBLISH) {
+     var users = [1, 2, 3];
+     this.createNewsfeedHome(users);
+    }
   } else if(this.position.name === 'group') {
     
     // Tạo bài viết trong group
@@ -75,7 +81,7 @@ feedSchema.methods.createNewsfeedHome = function(users) {
     // Khởi tạo feed home đến các user theo dõi
     FeedHome.create({
       to_id: users[i],
-      feed_id: this.privacy,
+      feed_id: this._id,
       ranking: this.ranking
     });
   }
