@@ -17,7 +17,7 @@ addActivityCmd.prototype = baseCmd;
 addActivityCmd.prototype.run = function (data, callback) {
   var self = this;
 
-  Feed.like({
+  Feed.act(data.verb, {
     actor: data.actor,
     object:data.object
   };
