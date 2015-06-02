@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var Feed = mongoose.model('FeedActivity');
+var Feed = mongoose.model('Feed');
 var baseCmd = require('./baseCmd');
 
 module.exports = addActivityCmd;
@@ -17,11 +17,10 @@ addActivityCmd.prototype = baseCmd;
 addActivityCmd.prototype.run = function (data, callback) {
   var self = this;
 
-  FeedActivity.create({
-    
-  }, function(err, doct) {
-    doct.send();
-  });
+  Feed.like({
+    actor: data.actor,
+    object:data.object
+  };
   
   this.data = {
     result: 'ok'
