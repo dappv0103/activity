@@ -31,8 +31,6 @@ addCmd.prototype.run = function (data, callback) {
     var users = [1,2];
     // Khởi tạo newsfeed đến vị trí
     doct.createNewsfeedPosition();
-    // Khởi tạo newsfeed đến các người dùng đang theo dõi người/ nhóm
-    doct.createNewsfeedHome(users);
   });
   
   this.data = {
