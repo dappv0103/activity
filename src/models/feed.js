@@ -91,4 +91,17 @@ feedSchema.methods.createNewsfeedHome = function(users) {
   }
 }
 
+feedSchema.methods.sendNotification = function(users) {
+  
+  for(var i =0; i <= users.length; i++) {
+    // Khởi tạo feed home đến các user theo dõi
+    Notification.create({
+      to_id: users[i],
+      verb: 'create',
+      feed_id: this._id,
+      ranking: this.ranking
+    });
+  }
+}
+
 mongoose.model('Feed', feedSchema);
