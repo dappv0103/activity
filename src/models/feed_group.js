@@ -4,8 +4,8 @@ var Schema = mongoose.Schema;
 
 /**
  * @var string _id
- * @var integer created_by
  * @var object object
+ * @var integer created_by
  * @var string position
  * @var object meta
  * @var integer ranking
@@ -17,12 +17,12 @@ var Schema = mongoose.Schema;
  
 
 
-var NotificationSchema = new Schema({
-  to_id: Number,
-  actor: Number,
-  verb:  Schema.Types.Mixed,
+var feedGroupSchema = new Schema({
+  group_id: Number,
   feed_id:  Schema.Types.ObjectId,
+  ranking:  Number,
   created_at: { type: Date, default: Date.now },
+  updated_at: { type: Date, default: Date.now },
 });
 
-mongoose.model('Notification', NotificationSchema);
+mongoose.model('FeedGroup', feedGroupSchema);

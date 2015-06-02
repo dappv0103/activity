@@ -17,12 +17,13 @@ var Schema = mongoose.Schema;
  
 
 
-var NotificationSchema = new Schema({
+var feedUserSchema = new Schema({
   to_id: Number,
-  actor: Number,
-  verb:  Schema.Types.Mixed,
   feed_id:  Schema.Types.ObjectId,
+  ranking:  Number,
   created_at: { type: Date, default: Date.now },
+  updated_at: { type: Date, default: Date.now },
+  privacy: Number
 });
 
-mongoose.model('Notification', NotificationSchema);
+mongoose.model('FeedUser', feedUserSchema);
