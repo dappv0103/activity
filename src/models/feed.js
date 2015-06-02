@@ -76,6 +76,10 @@ feedSchema.methods.createNewsfeedPosition = function() {
     // Gửi bài viết đến trang chủ những người đang theo dõi nhóm
     var users = [1, 2, 3, 4];
     this.createNewsfeedHome(users);
+    
+    // Gửi thông báo đến người đăng ký nhận thông báo nhóm
+    var users = [1, 2, 3, 4, 5];
+    this.sendNotification(users);
   }
 }
 
