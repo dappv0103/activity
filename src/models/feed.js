@@ -112,4 +112,7 @@ feedSchema.methods.sendNotification = function(users) {
   }
 }
 
+feedSchema.statics.activity = function(verb, data) {
+ 
+}
 mongoose.model('Feed', feedSchema);
