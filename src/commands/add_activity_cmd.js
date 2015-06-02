@@ -19,7 +19,8 @@ addActivityCmd.prototype.run = function (data, callback) {
 
   Feed.act(data.verb, {
     actor: data.actor,
-    object:data.object
+    object:data.object,
+    meta: data.meta
   };
   
   this.data = {
