@@ -21,6 +21,7 @@ var FeedHome = mongoose.model('FeedHome');
 
 
 var feedSchema = new Schema({
+ 
   created_by: Number,
   
   object:  {
@@ -32,15 +33,19 @@ var feedSchema = new Schema({
    type: String,
    id: Number
   },
+  
   created_at: { 
    type: Date, 
    default: Date.now 
   },
+  
   updated_at: { 
    type: Date,
    default: Date.now 
   },
+  
   meta: Schema.Types.Mixed,
+  
   ranking: Number,
   privacy: Number,
 });
