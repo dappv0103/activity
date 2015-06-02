@@ -25,4 +25,5 @@ var feedActivity = new Schema({
   created_time: { type: Date, default: Date.now },
 });
 
+
 mongoose.model('FeedActivity', feedActivity);
