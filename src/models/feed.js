@@ -72,6 +72,10 @@ feedSchema.methods.createNewsfeedPosition = function() {
       group_id: this.position.id,
       feed_id: this._id,
     });
+    
+    // Gửi bài viết đến trang chủ những người đang theo dõi nhóm
+    var users = [1, 2, 3, 4];
+    this.createNewsfeedHome(users);
   }
 }
 
