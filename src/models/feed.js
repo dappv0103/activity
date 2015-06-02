@@ -42,8 +42,11 @@ var feedSchema = new Schema({
   },
   meta: Schema.Types.Mixed,
   ranking: Number,
-  privacy: Boolean,
+  privacy: Number,
 });
+
+feedSchema.prototype.P_PRIVATE;
+feedSchema.prototype.P_PUBLISH;
 
 // Khởi tạo các đối tượng newsfeed liên quan
 feedSchema.methods.createNewsfeedPosition = function() {
