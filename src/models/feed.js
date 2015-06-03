@@ -5,6 +5,7 @@ var FeedUser = mongoose.model('FeedUser');
 var FeedGroup = mongoose.model('FeedGroup');
 var FeedHome = mongoose.model('FeedHome');
 var FeedActivity = mongoose.model('FeedActivity');
+
 /**
  * @var string _id
  * @var object object
