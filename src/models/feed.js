@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 var FeedUser = mongoose.model('FeedUser');
 var FeedGroup = mongoose.model('FeedGroup');
 var FeedHome = mongoose.model('FeedHome');
-
+var FeedActivity = mongoose.model('FeedActivity');
 /**
  * @var string _id
  * @var object object
@@ -124,7 +124,7 @@ feedSchema.statics.activity = function(verb, data) {
       actor: data.actor,
       feed_id: doct._id
      }, function(err, doct2) {
-      
+      // cập nhật newsfeed đến những người theo dõi, nhận thông báo
      });
     }
   });
