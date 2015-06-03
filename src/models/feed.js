@@ -126,6 +126,8 @@ feedSchema.statics.activity = function(verb, data) {
       feed_id: doct._id
      }, function(err, doct2) {
       // cập nhật newsfeed đến những người theo dõi, nhận thông báo
+      doct2.sendNewsfeed();
+      doct2.sendNotification();
      });
     }
   });
