@@ -15,22 +15,29 @@ var Schema = mongoose.Schema;
 
 var feedActivity = new Schema({
   to_id: Number,
-  actors:  Array,
-  verb:   Schema.Types.Mixed,,
+  actor:  Number,
+  verb:   Schema.Types.Mixed,
   feed_id: Schema.Types.ObjectId,
   created_time: { type: Date, default: Date.now },
 });
 
 
-feedActivity.methods.sendNotification = function(users) {
- for(var i = 0; i <= users.length; i++) {
-  Notification.createOrInsert({
-   to_id: users[i],
-   actors:this.actor,
-   verb: this.verb,
-   feed_id: this.id,
-  })
- }
+feedActivity.methods.sendNotification = function() {
+ Notification.createOrInsert({
+  to_id: this.to_id,
+  actor:this.actor,
+  verb: this.verb,
+  feed_id: this.feed_id,
+ })
+}
+
+feedActivity.methods.sendNewsfeed = function() {
+ FeedHome.createOrUpdate({
+  to_id: this.to_id,
+  actor:this.actor,
+  verb: this.verb,
+  feed_id: this.feed_id,
+ })
 }
 
 mongoose.model('FeedActivity', feedActivity);
