@@ -180,4 +180,8 @@ feedSchema.methods.removeActivities = function() {
  return FeedActivity.remove({feed_id: this._id}); 
 }
 
+feedSchema.methods.removeNotifications = function() {
+ return Notification.remove({feed_id: this._id}); 
+}
+
 mongoose.model('Feed', feedSchema);
