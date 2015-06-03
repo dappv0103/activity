@@ -18,12 +18,13 @@ var feedActivity = new Schema({
   actor:  Number,
   verb:   Schema.Types.Mixed,
   feed_id: Schema.Types.ObjectId,
+  ranking: Number,
   created_time: { type: Date, default: Date.now },
 });
 
 
 feedActivity.methods.sendNotification = function() {
- Notification.createOrInsert({
+ Notification.createOrUpdate({
   to_id: this.to_id,
   actor:this.actor,
   verb: this.verb,
@@ -33,10 +34,9 @@ feedActivity.methods.sendNotification = function() {
 
 feedActivity.methods.sendNewsfeed = function() {
  FeedHome.createOrUpdate({
-  to_id: this.to_id,
-  actor:this.actor,
-  verb: this.verb,
+  to_id: users[i],
   feed_id: this.feed_id,
+  ranking: this.ranking
  })
 }
 
