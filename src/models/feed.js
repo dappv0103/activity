@@ -138,10 +138,14 @@ feedSchema.statics.removeFeed = function(object) {
   });
 }
 
+feedSchema.statics.removeActivity = function(verb, actor) {
+  FeedActivity.removeFeedActivty(verb, actor);
+}
+
 feedSchema.statics.activity = function(verb, data) {
  
   this.findOne({object: data.object}, function(err, doct) {
-    ranking = doct.ranking + data.ranking;
+    var ranking = doct.ranking + data.ranking;
     // gửi bảng tin đến những người đang theo dõi
     var users = [1, 2, 3];
     for(var i =0; i <= users.length; i++) {
