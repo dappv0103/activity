@@ -41,6 +41,7 @@ NotificationSchema.insertOrUpdate = function(data) {
    });
   } else {
    doct.actors.push(data.actor);
+   doct.created_at = Date.now;
    doct.save(function(err) {
     // log error
    });
