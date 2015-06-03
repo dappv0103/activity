@@ -22,6 +22,7 @@ var NotificationSchema = new Schema({
   actor: Number,
   verb:  Schema.Types.Mixed,
   feed_id:  Schema.Types.ObjectId,
+  is_read: Boolean,
   created_at: { type: Date, default: Date.now },
 });
 
