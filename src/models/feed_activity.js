@@ -40,4 +40,8 @@ feedActivity.methods.sendNewsfeed = function() {
  })
 }
 
+feedActivity.statics.removeFeedActivty = function(verb, actor) {
+ this.remove({verb: verb, actor: actor});
+}
+
 mongoose.model('FeedActivity', feedActivity);
