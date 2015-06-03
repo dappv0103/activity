@@ -5,6 +5,11 @@ var FeedUser = mongoose.model('FeedUser');
 var FeedGroup = mongoose.model('FeedGroup');
 var FeedHome = mongoose.model('FeedHome');
 var FeedActivity = mongoose.model('FeedActivity');
+var Notification = mongoose.model('Notification');
+var FollowMap = mongoose.model('FollowMap');
+var AlertMap = mongoose.model('AlertMap');
+
+
 
 /**
  * @var string _id
@@ -56,7 +61,7 @@ feedSchema.prototype.P_PUBLISH;
 
 // Khởi tạo các đối tượng newsfeed liên quan
 feedSchema.methods.createNewsfeedPosition = function() {
-  
+  var self = this;
   if(this.position.name === "user") {
     
     // Tạo bài viết  trên trang chủ user
@@ -68,8 +73,15 @@ feedSchema.methods.createNewsfeedPosition = function() {
     
     // Gửi bài viết đến những người đang theo dõi
     if(this.privacy === this.P_PUBLISH) {
-     var users = [1, 2, 3];
-     this.createNewsfeedHome(users);
+     
+     // Danh sách những người đang theo dõi
+     FollowMap.findGetUids({object: {
+        id: this.position.id,
+        type: this.position.name
+     }}, function(users) {
+         this.createNewsfeedHome(users);
+     });
+     
     }
   } else if(this.position.name === 'group') {
     
@@ -80,15 +92,35 @@ feedSchema.methods.createNewsfeedPosition = function() {
     });
     
     // Gửi bài viết đến trang chủ những người đang theo dõi nhóm
-    var users = [1, 2, 3, 4];
-    this.createNewsfeedHome(users);
+    
+    FollowMap.findGetUids({
+        object: {
+            id: this.position.id,
+            type: this.position.name
+        }
+    }, function(users) {
+         this.createNewsfeedHome(users);
+    });
+    
+    
+    
     
     // Gửi thông báo đến người đăng ký nhận thông báo nhóm
-    var users = [1, 2, 3, 4, 5];
-    this.sendNotification(users);
+    AlertMap.findGetUids({
+        object: {
+            id: this.position.id,
+            type: this.position.name
+        }
+    }, function(users) {
+         self.sendNotification(users);
+    });
   }
 }
 
+
+/**
+ * Tạo bảng tin đến danh sách người dùng
+ */
 feedSchema.methods.createNewsfeedHome = function(users) {
   
   for(var i =0; i <= users.length; i++) {
@@ -101,6 +133,11 @@ feedSchema.methods.createNewsfeedHome = function(users) {
   }
 }
 
+
+/**
+ *
+ * Gửi thông báo đến danh sách người dùng
+ */
 feedSchema.methods.sendNotification = function(users) {
   
   for(var i =0; i <= users.length; i++) {
@@ -113,6 +150,10 @@ feedSchema.methods.sendNotification = function(users) {
   }
 }
 
+
+/**
+ * Xóa bảng tin
+ */ 
 feedSchema.statics.removeFeed = function(object) {
   this.findOne({object:object}, function(err, doct) {
    // xóa bảng tin
@@ -138,29 +179,46 @@ feedSchema.statics.removeFeed = function(object) {
   });
 }
 
+/**
+ * Xóa hoạt động
+ */
 feedSchema.statics.removeActivity = function(verb, actor) {
   FeedActivity.removeFeedActivty(verb, actor);
 }
 
+/**
+ * Hoạt động trên bảng tin
+ */
 feedSchema.statics.activity = function(verb, data) {
  
   this.findOne({object: data.object}, function(err, doct) {
     var ranking = doct.ranking + data.ranking;
     // gửi bảng tin đến những người đang theo dõi
-    var users = [1, 2, 3];
-    for(var i =0; i <= users.length; i++) {
-     FeedActivity.insert({
-      to_id: users[i],
-      verb: verb,
-      actor: data.actor,
-      feed_id: doct._id,
-      ranking: ranking
-     }, function(err, doct2) {
-      // cập nhật newsfeed đến những người theo dõi, nhận thông báo
-      doct2.sendNewsfeed();
-      doct2.sendNotification();
-     });
-    }
+    
+    FollowMap.findGetUids({
+        object: {
+            id: doct.position.id,
+            type: doct.position.name
+        }
+    }, function(err, users) {
+         // biến đổi danh sánh người dùng đang theo dõi
+         
+         for(var i = 0; i < users.length; i++) {
+             
+            FeedActivity.insert({
+              to_id: users[i],
+              verb: verb,
+              actor: data.actor,
+              feed_id: doct._id,
+              ranking: ranking
+            }, function(err, doct2) {
+              // cập nhật newsfeed đến những người theo dõi, nhận thông báo
+              doct2.sendNewsfeed();
+              doct2.sendNotification();
+            });
+         }
+    });
+
   });
 }
 

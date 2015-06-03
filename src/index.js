@@ -12,7 +12,7 @@ var server = net.createServer(function(socket) { //'connection' listener
   // on data
   socket.on('data', function(data) {
     data = JSON.parse(data);
-    var cmd =  Command.find(data.name);
+    var cmd =  command.find(data.name);
     delete data.name;
     if(cmd != null) {
       cmd.run(data, function(result) {

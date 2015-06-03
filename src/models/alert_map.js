@@ -19,4 +19,15 @@ var AlertMap = new Schema({
   },
 });
 
+AlertMap.statics.findGetUids = function(condition, callback) {
+  var _users = [];
+  this.find(condition, function(err, users) {
+    console.log('Error' + err);
+    for(var i = 0; i < users.length; i++) {
+      _users.push(users[i].user_id);
+    }
+    return callback(users);
+  })
+}
+
 mongoose.model('AlertMap', AlertMap);

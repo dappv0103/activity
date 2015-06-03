@@ -19,9 +19,9 @@ addActivityCmd.prototype.run = function (data, callback) {
 
   Feed.activity(data.verb, {
     actor: data.actor,
-    object:data.object,
+    object: data.object,
     meta: data.meta
-  };
+  });
   
   this.data = {
     result: 'ok'

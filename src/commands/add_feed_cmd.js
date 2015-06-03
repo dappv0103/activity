@@ -1,20 +1,19 @@
 var mongoose = require('mongoose');
 var Feed = mongoose.model('Feed');
-var FeedUser = mongoose.model('FeedUser');
 var baseCmd = require('./baseCmd');
 
-module.exports = addCmd;
+module.exports = addFeedCmd;
 
 
-function addCmd() {
-  if (!(this instanceof addCmd)) return new addCmd();
+function addFeedCmd() {
+  if (!(this instanceof addFeedCmd)) return new addFeedCmd();
   this.data = null;
   this.error = null;
 };
 
-addCmd.prototype = baseCmd;
+addFeedCmd.prototype = baseCmd;
 
-addCmd.prototype.run = function (data, callback) {
+addFeedCmd.prototype.run = function (data, callback) {
   var self = this;
   
   // Tạo feed khi có hành động đăng đối tượng nào đấy

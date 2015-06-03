@@ -29,17 +29,29 @@ var NotificationSchema = new Schema({
   created_at: { type: Date, default: Date.now },
 });
 
-NotificationSchema.insertOrUpdate = function(data) {
+
+
+/**
+ * Insert or update notification
+ * 
+ * @param Object data {feed_id, verb, actor, to_id}
+ */
+NotificationSchema.statics.insertOrUpdate = function(data) {
  var self = this;
  this.findOne({feed_id: data.feed_id, verb: data.verb}, function(err, doct) {
   if(!doct ) {
+   
+   // khởi tạo thông báo mới
    self.insert({
     to_id: data.to_id,
     actors: [data.actor],
     verb: data.verb,
     feed_id: data.feed_id,
    });
+   
   } else {
+   
+   // Thêm danh sách người mới hoạt động
    doct.actors.push(data.actor);
    doct.created_at = Date.now;
    doct.save(function(err) {
