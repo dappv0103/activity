@@ -114,8 +114,9 @@ feedSchema.methods.sendNotification = function(users) {
 }
 
 feedSchema.statics.activity = function(verb, data) {
+ 
   this.findOne({object: data.object}, function(err, doct) {
-   
+    ranking = doct.ranking + data.ranking;
     // gửi bảng tin đến những người đang theo dõi
     var users = [1, 2, 3];
     for(var i =0; i <= users.length; i++) {
@@ -123,7 +124,8 @@ feedSchema.statics.activity = function(verb, data) {
       to_id: users[i],
       verb: verb,
       actor: data.actor,
-      feed_id: doct._id
+      feed_id: doct._id,
+      ranking: ranking
      }, function(err, doct2) {
       // cập nhật newsfeed đến những người theo dõi, nhận thông báo
       doct2.sendNewsfeed();
