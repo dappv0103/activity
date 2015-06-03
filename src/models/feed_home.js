@@ -21,8 +21,32 @@ var feedHomeSchema = new Schema({
   to_id: Number,
   feed_id:  Schema.Types.ObjectId,
   ranking:  Number,
-  created_at: { type: Date, default: Date.now },
-  updated_at: { type: Date, default: Date.now },
+  created_at: { type: Date, default: Date.now }
 });
+
+feedHomeSchema.statics.createOrUpdate = function(data) {
+ var self = this;
+ this.find({object: data.object, to_id: data.to_id}, function(err, doct) {
+   if(!doct) {
+    
+    // tạo tin mới
+    self.insert({
+      to_id: data.to_id,
+      feed_id: data.feed_id,
+      ranking: data.ranking,
+    }, function(err, doct) {
+     // log error
+    });
+   } else {
+    
+    // cập nhật tin mới
+    doct.created_at = Date.now;
+    doct.ranking += data.ranking;
+    doct.save(function(err) {
+     // Log error
+    });
+   }
+ });
+}
 
 mongoose.model('FeedHome', feedHomeSchema);
