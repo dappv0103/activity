@@ -184,4 +184,9 @@ feedSchema.methods.removeNotifications = function() {
  return Notification.remove({feed_id: this._id}); 
 }
 
+
+feedSchema.statics.findNewsfeed = function(user_id, page) {
+ 
+}
+
 mongoose.model('Feed', feedSchema);
