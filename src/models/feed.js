@@ -31,7 +31,7 @@ var feedSchema = new Schema({
   },
   
   position:  {
-   type: String,
+   name: String,
    id: Number
   },
   
@@ -111,6 +111,31 @@ feedSchema.methods.sendNotification = function(users) {
       feed_id: this._id
     });
   }
+}
+
+feedSchema.statics.removeFeed = function(object) {
+  this.findOne({object:object}, function(err, doct) {
+   // xóa bảng tin
+   doct.remove();
+   if(doct.postion.name === 'group') {
+    
+    // xóa tin trong group
+    doct.removeFeedGroup();
+   } else if(doct.postion.name === 'user') {
+    
+    // xóa tin trong trang người dùng
+    doct.removeFeedUser();
+   }
+   
+   // xóa tin trong trang chủ người dùng
+   doct.removeFeedHome();
+   
+   // xóa hoạt động liên quan đến tin
+   doct.removeFeedActivities();
+   
+   // xóa thông báo liên quan đến  tin
+   doct.removeNotifications();
+  });
 }
 
 feedSchema.statics.activity = function(verb, data) {
