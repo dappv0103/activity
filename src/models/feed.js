@@ -72,7 +72,7 @@ feedSchema.methods.createNewsfeedPosition = function() {
     }
   } else if(this.position.name === 'group') {
     
-    // Tạo bài viết trong group
+    // Tạo bài viết trong trang chủ hội nhóm
     FeedGroup.create({
       group_id: this.position.id,
       feed_id: this._id,
