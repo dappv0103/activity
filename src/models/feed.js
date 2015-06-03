@@ -189,4 +189,8 @@ feedSchema.statics.findNewsfeed = function(user_id, page) {
  
 }
 
+feedSchema.statics.findNotification = function(user_id, page) {
+ 
+}
+
 mongoose.model('Feed', feedSchema);
