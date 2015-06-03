@@ -163,4 +163,21 @@ feedSchema.statics.activity = function(verb, data) {
     }
   });
 }
+
+feedSchema.methods.removeFeedGroup = function() {
+ return FeedGroup.remove({feed_id: this._id}); 
+}
+
+feedSchema.methods.removeFeedUser = function() {
+ return FeedUser.remove({feed_id: this._id}); 
+}
+
+feedSchema.methods.removeFeedHome = function() {
+ return FeedHome.remove({feed_id: this._id}); 
+}
+
+feedSchema.methods.removeActivities = function() {
+ return FeedActivity.remove({feed_id: this._id}); 
+}
+
 mongoose.model('Feed', feedSchema);
