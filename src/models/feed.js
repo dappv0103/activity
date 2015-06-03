@@ -118,11 +118,13 @@ feedSchema.statics.activity = function(verb, data) {
     // gửi bảng tin đến những người đang theo dõi
     var users = [1, 2, 3];
     for(var i =0; i <= users.length; i++) {
-     FeedActivity.createOrUpdate({
+     FeedActivity.insert({
       to_id: users[i],
       verb: verb,
       actor: data.actor,
       feed_id: doct._id
+     }, function(err, doct2) {
+      
      });
     }
   });
