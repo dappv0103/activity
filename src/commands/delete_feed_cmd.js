@@ -23,14 +23,7 @@ DeleteFeedCmd.prototype.run = function (data, callback) {
   var self = this;
   
   // Tạo feed khi có hành động đăng đối tượng nào đấy
-  Feed.removeFeed({
-    data
-  });
-  
-  feed.save(function(err) {
-    // Log error
-    feed.createNewsfeedPosition();
-  });
+  Feed.removeFeed(data);
   
   this.data = {
     result: 'ok'
