@@ -72,11 +72,7 @@ feedSchema.methods.createNewsfeedPosition = function() {
   if(this.position.name === this.POSITION_USER) {
     
     // Tạo bài viết  trên trang chủ user
-    FeedUser.create({
-      to_id: this.position.id,
-      feed_id: this._id,
-      privacy: this.privacy
-    });
+    FeedUser.createFromFeed(this);
     
     // Gửi bài viết đến những người đang theo dõi
     if(this.privacy === this.P_PUBLISH) {
