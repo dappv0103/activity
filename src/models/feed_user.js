@@ -26,4 +26,26 @@ var feedUserSchema = new Schema({
   privacy: Number
 });
 
+feedUserSchema.statics.insertOrUpdate = function(data) {
+ var self = this;
+ this.findOne({feed_id: data.feed_id}, function(err, doct) {
+  if(!doct) {
+   
+   // tạo bảng tin trên trang cá nhân
+   self.insert({
+    to_id: data.to_id,
+    feed_id: data.feed_id,
+    ranking: data.ranking,
+    privacy: data.privacy,
+   });
+  } else {
+   // Cập nhật lại điểm ranking
+   doct.ranking = data.ranking;
+   doct.save(function(err) {
+    // Log error
+   });
+  }
+ });
+}
+
 mongoose.model('FeedUser', feedUserSchema);
