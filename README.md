@@ -67,3 +67,23 @@ command.find('activity').run({
   console.log('result');
 });
 ```
+
+# Xóa Hoạt động
+```
+command.find('delete_activity').run({
+  
+  // Người hoạt động
+  actor: 10,
+  
+  // Hành động
+  verb: 'like',
+  
+  // Đối tượng hoạt động
+  object: {
+    id: 10,
+    name: "status"
+  },
+}, function(result) {
+  console.log('result');
+});
+```
