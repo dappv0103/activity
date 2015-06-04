@@ -62,11 +62,14 @@ feedSchema.prototype.P_PRIVATE;
 // public feed
 feedSchema.prototype.P_PUBLISH;
 
+feedSchema.prototype.POSITION_USER = 'user';
+feedSchema.prototype.POSITION_GROUP = 'group';
+
 // Khởi tạo các đối tượng newsfeed liên quan
 feedSchema.methods.createNewsfeedPosition = function() {
     
   var self = this;
-  if(this.position.name === "user") {
+  if(this.position.name === this.POSITION_USER) {
     
     // Tạo bài viết  trên trang chủ user
     FeedUser.create({
@@ -87,7 +90,7 @@ feedSchema.methods.createNewsfeedPosition = function() {
      });
      
     }
-  } else if(this.position.name === 'group') {
+  } else if(this.position.name === this.POSITION_GROUP) {
     
     // Tạo bài viết trong trang chủ hội nhóm
     FeedGroup.create({
