@@ -19,7 +19,10 @@ var Schema = mongoose.Schema;
 
 var feedGroupSchema = new Schema({
   group_id: Number,
-  feed_id:  Schema.Types.ObjectId,
+  feed_id:  {
+   type: Schema.ObjectId,
+   ref: 'Feed'
+  },
   ranking:  Number,
   created_at: { type: Date, default: Date.now },
   updated_at: { type: Date, default: Date.now },
