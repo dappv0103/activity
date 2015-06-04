@@ -56,11 +56,15 @@ var feedSchema = new Schema({
   privacy: Number,
 });
 
+// private feed
 feedSchema.prototype.P_PRIVATE;
+
+// public feed
 feedSchema.prototype.P_PUBLISH;
 
 // Khởi tạo các đối tượng newsfeed liên quan
 feedSchema.methods.createNewsfeedPosition = function() {
+    
   var self = this;
   if(this.position.name === "user") {
     
@@ -92,7 +96,6 @@ feedSchema.methods.createNewsfeedPosition = function() {
     });
     
     // Gửi bài viết đến trang chủ những người đang theo dõi nhóm
-    
     FollowMap.findGetUids({
         object: {
             id: this.position.id,
@@ -101,9 +104,6 @@ feedSchema.methods.createNewsfeedPosition = function() {
     }, function(users) {
          this.createNewsfeedHome(users);
     });
-    
-    
-    
     
     // Gửi thông báo đến người đăng ký nhận thông báo nhóm
     AlertMap.findGetUids({
@@ -201,8 +201,8 @@ feedSchema.statics.activity = function(verb, data) {
             type: doct.position.name
         }
     }, function(err, users) {
-         // biến đổi danh sánh người dùng đang theo dõi
          
+         // biến đổi danh sánh người dùng đang theo dõi
          for(var i = 0; i < users.length; i++) {
              
             FeedActivity.insert({
@@ -222,31 +222,39 @@ feedSchema.statics.activity = function(verb, data) {
   });
 }
 
+
+
+// remove feed group
 feedSchema.methods.removeFeedGroup = function() {
  return FeedGroup.remove({feed_id: this._id}); 
 }
 
+// remove feed user
 feedSchema.methods.removeFeedUser = function() {
  return FeedUser.remove({feed_id: this._id}); 
 }
 
+// remove feed home
 feedSchema.methods.removeFeedHome = function() {
  return FeedHome.remove({feed_id: this._id}); 
 }
 
+// remove activities
 feedSchema.methods.removeActivities = function() {
  return FeedActivity.remove({feed_id: this._id}); 
 }
 
+// remove notification
 feedSchema.methods.removeNotifications = function() {
  return Notification.remove({feed_id: this._id}); 
 }
 
-
+// find newsfeed
 feedSchema.statics.findNewsfeed = function(user_id, page) {
  
 }
 
+// find notification
 feedSchema.statics.findNotification = function(user_id, page) {
  
 }

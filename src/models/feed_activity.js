@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-
+var Notification = mongoose.model('Notification');
+var FeedHome = mongoose.model('FeedHome');
 
 /**
  * @var Number to_id
@@ -34,7 +35,7 @@ feedActivity.methods.sendNotification = function() {
 
 feedActivity.methods.sendNewsfeed = function() {
  FeedHome.createOrUpdate({
-  to_id: users[i],
+  to_id: this.to_id,
   feed_id: this.feed_id,
   ranking: this.ranking
  })
