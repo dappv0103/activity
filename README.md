@@ -12,6 +12,11 @@ command.find('add_feed').run({
     id: 1
   },
   
+  // Thông tin đối tượng
+  object: {
+    name: 'status',
+    id: 10
+  }
   // thông tin liên quan
   meta: {
     id: 10
