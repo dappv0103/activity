@@ -1,6 +1,7 @@
 # activity
 newsfeed, notification
 
+# Tạo tin mới
 ```
 command.find('add_feed').run({
   // người tạo tin
