@@ -3,9 +3,10 @@ var Schema = mongoose.Schema;
 
 
 /**
- * @var string _id
+ * @var string  _id
  * @var integer user_id
- * @var object object
+ * @var object  object
+ * @var integer ranking
  */
  
  
