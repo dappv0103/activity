@@ -21,7 +21,8 @@ command.find('add_feed').run({
   // thông tin liên quan
   meta: {
     id: 10
-    content: "Đi chơi ngày qua",
+    content: "Ngày làm việc bình thường",
+    comments: [{id:10, content: "bình thường"}]
     tags: [{id:1, name: "Long"}, {id:2, name: "Thắng"}]
   },
   
