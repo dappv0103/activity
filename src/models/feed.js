@@ -76,15 +76,7 @@ feedSchema.methods.createNewsfeedPosition = function() {
     
     // Gửi bài viết đến những người đang theo dõi
     if(this.privacy === this.P_PUBLISH) {
-     
-     // Danh sách những người đang theo dõi
-     FollowMap.findGetUids({object: {
-        id: this.position.id,
-        type: this.position.name
-     }}, function(users) {
-         this.createNewsfeedHome(users);
-     });
-     
+     feedHome.createFromFeed(this);
     }
   } else if(this.position.name === this.POSITION_GROUP) {
     
