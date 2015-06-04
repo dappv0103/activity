@@ -26,7 +26,7 @@ AlertMap.statics.findGetUids = function(condition, callback) {
     for(var i = 0; i < users.length; i++) {
       _users.push(users[i].user_id);
     }
-    return callback(users);
+    return callback(_users);
   })
 }
 
