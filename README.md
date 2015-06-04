@@ -17,6 +17,7 @@ command.find('add_feed').run({
     name: 'status',
     id: 10
   }
+  
   // thông tin liên quan
   meta: {
     id: 10
