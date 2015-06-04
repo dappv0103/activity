@@ -30,7 +30,17 @@ var NotificationSchema = new Schema({
   created_at: { type: Date, default: Date.now },
 });
 
-
+NotificationSchema.statics.sendFromFeed = function(feed) {
+ var self = this;
+ AlertMap.findGetUids({
+  object: {
+   id: feed.position.id,
+   name: feed.position.name
+  }
+ }, function(users) {
+  
+ });
+}
 
 /**
  * Insert or update notification
