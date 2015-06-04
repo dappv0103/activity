@@ -43,7 +43,14 @@ feedActivity.methods.sendNewsfeed = function() {
 
 feedActivity.statics.removeFeedActivty = function(verb, actor, feed_id) {
  this.remove({verb: verb, actor: actor, feed_id: feed_id});
- Notification.find({feed_id: feed_id});
+ Notification.update({
+  feed_id: feed_id
+  verb: verb,
+ }, {
+  actors: {
+   $pull: actor
+  }
+ });
 }
 
 mongoose.model('FeedActivity', feedActivity);
