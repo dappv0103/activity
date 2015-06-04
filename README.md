@@ -133,3 +133,7 @@ command.find('notification').run({
 ```
 
 #Pub/Sub
+pub.publish('channel:1', {
+  feed_id: 10,
+  content: 'Ngày làm việc mới...'
+});
