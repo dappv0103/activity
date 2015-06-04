@@ -40,6 +40,11 @@ feedHomeSchema.statics.createFromFeed = function(feed) {
   });
 }
 
+feedHomeSchema.statics.findAndRender = function(condition) {
+ this.find(condition, function() {
+  
+ });
+}
 
 feedHomeSchema.statics.createOrUpdate = function(data) {
  var self = this;
