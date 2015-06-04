@@ -22,6 +22,7 @@ var NotificationSchema = new Schema({
   actors: Array,
   verb:  Schema.Types.Mixed,
   feed_id:  Schema.Types.ObjectId,
+  meta: Schema.Types.Mixed,
   is_read: {
    type: Boolean,
    default: false,
@@ -47,6 +48,7 @@ NotificationSchema.statics.insertOrUpdate = function(data) {
     actors: [data.actor],
     verb: data.verb,
     feed_id: data.feed_id,
+    meta.data.meta
    });
    
   } else {
@@ -54,6 +56,7 @@ NotificationSchema.statics.insertOrUpdate = function(data) {
    // Thêm danh sách người mới hoạt động
    doct.actors.push(data.actor);
    doct.created_at = Date.now;
+   doct.meta = data.meta;
    doct.save(function(err) {
     // log error
    });
