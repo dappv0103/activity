@@ -19,7 +19,10 @@ var Schema = mongoose.Schema;
 
 var feedUserSchema = new Schema({
   to_id: Number,
-  feed_id:  Schema.Types.ObjectId,
+  feed_id:  {
+   type: Schema.ObjectId,
+   ref: 'Feed'
+  },
   ranking:  Number,
   created_at: { type: Date, default: Date.now },
   updated_at: { type: Date, default: Date.now },
