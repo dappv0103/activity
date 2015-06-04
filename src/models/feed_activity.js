@@ -54,13 +54,19 @@ feedActivity.statics.insertFromFeed = function(verb, actor, feed) {
   name: feed.position.name
  }}, function(users) {
   for(var i = 0; i <= users.length; i++) {
-   self.create({
+   var activity = new feedActivity({
     to_id: users[i],
     actor: actor,
     verb: verb,
     feed_id: feed._id,
     ranking: feed.ranking
-   })
+   });
+   
+   // Save activity
+   activity.save(function(err) {
+    activity.sendNewsfeed();
+    activity.sendNotification();.
+   });
   }
  })
 }
