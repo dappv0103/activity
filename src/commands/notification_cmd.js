@@ -23,13 +23,11 @@ NotificationCmd.prototype.run = function (data, callback) {
   
   var self = this;
   
-  // Thêm hoạt động mới
-  Notification.find({to_id: data.to_id}).exec(function() {
-    
+  Notification
+  .find({to_id: data.to_id})
+  .populate('Feed')
+  .exec(function(err, docs) {
+    self.setData(self._buildRenderNotification(docs));
+    return callback(self.getString());
   });
-  
-  this.data = {
-    result: 'ok'
-  };
-  callback(this.getString());
 };
