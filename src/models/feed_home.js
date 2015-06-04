@@ -41,7 +41,7 @@ feedHomeSchema.statics.createOrUpdate = function(data) {
     
     // cập nhật tin mới
     doct.created_at = Date.now;
-    doct.ranking += data.ranking;
+    doct.ranking = data.ranking;
     doct.save(function(err) {
      // Log error
     });
