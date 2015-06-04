@@ -81,63 +81,14 @@ feedSchema.methods.createNewsfeedPosition = function() {
   } else if(this.position.name === this.POSITION_GROUP) {
     
     // Tạo bài viết trong trang chủ hội nhóm
-    FeedGroup.create({
-      group_id: this.position.id,
-      feed_id: this._id,
-    });
+    FeedGroup.createFromFeed(this);
     
-    // Gửi bài viết đến trang chủ những người đang theo dõi nhóm
-    FollowMap.findGetUids({
-        object: {
-            id: this.position.id,
-            type: this.position.name
-        }
-    }, function(users) {
-         this.createNewsfeedHome(users);
-    });
+    // Tạo bài viết trong trang chủ người dùng
+    feedHome.createFromFeed(this);
     
     // Gửi thông báo đến người đăng ký nhận thông báo nhóm
-    AlertMap.findGetUids({
-        object: {
-            id: this.position.id,
-            type: this.position.name
-        }
-    }, function(users) {
-         self.sendNotification(users);
-    });
-  }
-}
-
-
-/**
- * Tạo bảng tin đến danh sách người dùng
- */
-feedSchema.methods.createNewsfeedHome = function(users) {
-  
-  for(var i =0; i <= users.length; i++) {
-    // Khởi tạo feed home đến các user theo dõi
-    FeedHome.create({
-      to_id: users[i],
-      feed_id: this._id,
-      ranking: this.ranking
-    });
-  }
-}
-
-
-/**
- *
- * Gửi thông báo đến danh sách người dùng
- */
-feedSchema.methods.sendNotification = function(users) {
-  
-  for(var i =0; i <= users.length; i++) {
-    // Khởi tạo feed home đến các user theo dõi
-    Notification.create({
-      to_id: users[i],
-      verb: 'create',
-      feed_id: this._id
-    });
+    Notification.sendFromFeed(this);
+    
   }
 }
 
