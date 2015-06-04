@@ -133,44 +133,8 @@ feedSchema.statics.removeActivity = function(verb, actor, object) {
 feedSchema.statics.activity = function(verb, data) {
  
   this.findOne({object: data.object}, function(err, doct) {
-    var ranking = doct.ranking + data.ranking;
-    // gửi bảng tin đến những người đang theo dõi
-    
-    FollowMap.findGetUids({
-        object: {
-            id: doct.position.id,
-            type: doct.position.name
-        }
-    }, function(err, users) {
-         
-         // biến đổi danh sánh người dùng đang theo dõi
-         for(var i = 0; i < users.length; i++) {
-             
-            FeedActivity.insert({
-              to_id: users[i],
-              verb: verb,
-              actor: data.actor,
-              feed_id: doct._id,
-              ranking: ranking
-            }, function(err, doct2) {
-              // cập nhật newsfeed đến những người theo dõi, nhận thông báo
-              doct2.sendNewsfeed();
-              doct2.sendNotification();
-            });
-         }
-    });
-
+    FeedActivity.insertFromFeed(verb, doct);
   });
-}
-
-// find newsfeed
-feedSchema.statics.findNewsfeed = function(user_id, page) {
- 
-}
-
-// find notification
-feedSchema.statics.findNotification = function(user_id, page) {
- 
 }
 
 mongoose.model('Feed', feedSchema);
