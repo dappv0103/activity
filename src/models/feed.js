@@ -132,10 +132,10 @@ feedSchema.statics.removeActivity = function(verb, actor, object) {
 /**
  * Hoạt động trên bảng tin
  */
-feedSchema.statics.activity = function(verb, data) {
+feedSchema.statics.activity = function(verb, actor, data) {
  
   this.findOne({object: data.object}, function(err, doct) {
-    FeedActivity.insertFromFeed(verb, doct);
+    FeedActivity.insertFromFeed(verb, actor, doct);
   });
 }
 
