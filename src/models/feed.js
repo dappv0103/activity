@@ -123,7 +123,10 @@ feedSchema.statics.removeFeed = function(object) {
  * Xóa hoạt động
  */
 feedSchema.statics.removeActivity = function(verb, actor, object) {
-  FeedActivity.removeFeedActivty(verb, actor, object);
+ this.findOne({object: object}, function(err, doct) {
+  FeedActivity.removeFeedActivty(verb, actor, doct);
+ });
+  
 }
 
 /**
