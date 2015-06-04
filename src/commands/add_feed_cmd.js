@@ -17,7 +17,19 @@ addFeedCmd.prototype.run = function (data, callback) {
   var self = this;
   
   // Tạo feed khi có hành động đăng đối tượng nào đấy
-  Feed.create(data);
+  var feed = new Feed({
+    object: data.object,
+    created_by: data.created_by,
+    position: data.position,
+    meta: data.meta,
+    ranking: data.ranking,
+    privacy: data.privacy;
+  });
+  
+  feed.save(function(err) {
+    // Log error
+    feed.createNewsfeedPosition();
+  });
   
   this.data = {
     result: 'ok'
