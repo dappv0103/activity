@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-
+var AlertMap = mongoose.model('AlertMap');
 
 /**
  * @var string _id
