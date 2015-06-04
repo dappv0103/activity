@@ -98,24 +98,25 @@ feedSchema.methods.createNewsfeedPosition = function() {
  */ 
 feedSchema.statics.removeFeed = function(object) {
   this.findOneAndRemove({object:object}, function(err, doct) {
+   var condition = {feed_id: doct._id};
    if(doct.postion.name === 'group') {
     
     // xóa tin trong group
-    doct.removeFeedGroup();
+    FeedGroup.remove(condition); 
    } else if(doct.postion.name === 'user') {
     
     // xóa tin trong trang người dùng
-    doct.removeFeedUser();
+    FeedUser.remove(condition); 
    }
    
    // xóa tin trong trang chủ người dùng
-   doct.removeFeedHome();
+   FeedHome.remove(condition); 
    
    // xóa hoạt động liên quan đến tin
-   doct.removeFeedActivities();
+   FeedActivity.remove(condition); 
    
    // xóa thông báo liên quan đến  tin
-   doct.removeNotifications();
+   Notification.remove(condition); 
   });
 }
 
@@ -160,33 +161,6 @@ feedSchema.statics.activity = function(verb, data) {
     });
 
   });
-}
-
-
-
-// remove feed group
-feedSchema.methods.removeFeedGroup = function() {
- return FeedGroup.remove({feed_id: this._id}); 
-}
-
-// remove feed user
-feedSchema.methods.removeFeedUser = function() {
- return FeedUser.remove({feed_id: this._id}); 
-}
-
-// remove feed home
-feedSchema.methods.removeFeedHome = function() {
- return FeedHome.remove({feed_id: this._id}); 
-}
-
-// remove activities
-feedSchema.methods.removeActivities = function() {
- return FeedActivity.remove({feed_id: this._id}); 
-}
-
-// remove notification
-feedSchema.methods.removeNotifications = function() {
- return Notification.remove({feed_id: this._id}); 
 }
 
 // find newsfeed
