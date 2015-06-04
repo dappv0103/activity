@@ -25,11 +25,18 @@ var feedHomeSchema = new Schema({
 });
 
 feedHomeSchema.statics.createFromFeed = function(feed) {
+  var self = this;
   FollowMap.findGetUids({object: {
      id: feed.position.id,
      type: feed.position.name
   }}, function(users) {
-      //
+    for(var i =0; i <=users.length; i++) {
+     self.insert({
+      to_id: users[i],
+      feed_id: feed._id,
+      ranking: feed.ranking
+     });
+    }
   });
 }
 
