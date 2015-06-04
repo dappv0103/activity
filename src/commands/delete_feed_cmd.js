@@ -1,24 +1,39 @@
-var Channel = require('../models/channel');
-var baseCmd = require('./baseCmd');
+var mongoose = require('mongoose');
+var Feed = mongoose.model('Feed');
+var baseCmd = require('./base_cmd');
 
-module.exports = removeCmd;
+module.exports = DeleteFeedCmd;
 
 
-function removeCmd() {
-  if (!(this instanceof removeCmd)) return new removeCmd();
+function DeleteFeedCmd() {
+  if (!(this instanceof DeleteFeedCmd)) return new DeleteFeedCmd();
+  this.data = null;
+  this.error = null;
 };
 
-removeCmd.prototype = baseCmd;
+DeleteFeedCmd.prototype = baseCmd;
 
-removeCmd.prototype.run  = function(data, callback) {
-  Channel.remove(data);
-  this.setData({
-    result: 'ok'
-  })
+/**
+ * Thêm bảng tin mới
+ * 
+ * @param Object    data
+ * @param Function  callback
+ */
+DeleteFeedCmd.prototype.run = function (data, callback) {
+  var self = this;
+  
+  // Tạo feed khi có hành động đăng đối tượng nào đấy
+  Feed.removeFeed({
+    data
+  });
+  
+  feed.save(function(err) {
+    // Log error
+    feed.createNewsfeedPosition();
+  });
   
   this.data = {
-    result:'ok'
+    result: 'ok'
   };
-  callback(this.getString());
+  return callback(this.getString());
 };
-
