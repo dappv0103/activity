@@ -6,8 +6,7 @@ var FeedGroup = mongoose.model('FeedGroup');
 var FeedHome = mongoose.model('FeedHome');
 var FeedActivity = mongoose.model('FeedActivity');
 var Notification = mongoose.model('Notification');
-var FollowMap = mongoose.model('FollowMap');
-var AlertMap = mongoose.model('AlertMap');
+
 
 
 
