@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-
+var FollowMap = mongoose.model('FollowMap');
 
 /**
  * @var string _id
