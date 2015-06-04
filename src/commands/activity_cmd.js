@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Feed = mongoose.model('Feed');
-var baseCmd = require('./baseCmd');
+var baseCmd = require('./base_cmd');
 
 module.exports = addActivityCmd;
 
