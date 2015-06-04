@@ -20,7 +20,7 @@ Newsfeed.prototype.run = function (data, callback) {
     .populate('Feed')
     .limit(5)
     .exec(function(err, docs) {
-      return callback(self._buildNewsfeedGroup(docs));
+      return callback(self._buildNewsfeedUser(docs));
     });
   } else (data.position.name == 'user') {
     FeedUser
