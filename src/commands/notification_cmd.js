@@ -34,7 +34,7 @@ NotificationCmd.prototype.run = function (data, callback) {
     self.data = self._buildRenderNotification(docs);
     self.data.page = {
       perPage: perPage,
-      page: page
+      current: page
     }
     return callback(self.getString());
   });
