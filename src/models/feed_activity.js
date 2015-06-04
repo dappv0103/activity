@@ -43,6 +43,8 @@ feedActivity.methods.sendNewsfeed = function() {
 
 feedActivity.statics.removeFeedActivty = function(verb, actor, feed_id) {
  this.remove({verb: verb, actor: actor, feed_id: feed_id});
+ 
+ // xóa thông báo liên quan
  Notification.update({
   feed_id: feed_id
   verb: verb,
