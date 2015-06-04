@@ -139,4 +139,5 @@ feedSchema.statics.activity = function(verb, actor, data) {
   });
 }
 
+
 mongoose.model('Feed', feedSchema);
