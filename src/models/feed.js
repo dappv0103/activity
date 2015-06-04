@@ -185,8 +185,8 @@ feedSchema.statics.removeFeed = function(object) {
 /**
  * Xóa hoạt động
  */
-feedSchema.statics.removeActivity = function(verb, actor) {
-  FeedActivity.removeFeedActivty(verb, actor);
+feedSchema.statics.removeActivity = function(verb, actor, object) {
+  FeedActivity.removeFeedActivty(verb, actor, object);
 }
 
 /**
