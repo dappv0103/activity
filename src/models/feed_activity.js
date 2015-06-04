@@ -58,8 +58,8 @@ feedActivity.statics.removeFeedActivty = function(verb, actor, feed_id) {
   feed_id: feed_id
   verb: verb,
  }, {
-  actors: {
-   $pull: actor
+  $pull: {
+   actors: [actor]
   }
  });
 }
