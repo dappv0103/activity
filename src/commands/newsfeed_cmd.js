@@ -14,7 +14,23 @@ Newsfeed.prototype = baseCmd;
 
 Newsfeed.prototype.run = function (data, callback) {
   var self = this;
-  
+  if(data.position.name =='group') {
+    FeedGroup
+    .find({group_id:data.position.id})
+    .populate('Feed')
+    .limit(5)
+    .exec(function(err, docs) {
+      return callback(self._buildNewsfeedGroup(docs));
+    });
+  } else (data.position.name == 'user') {
+    FeedUser
+    .find({to_id:data.position.id})
+    .populate('Feed')
+    .limit(5)
+    .exec(function(err, docs) {
+      return callback(self._buildNewsfeedHome(docs));
+    });
+  }
 };
 
 Newsfeed.prototype.callCmd = function(results, callback) {
