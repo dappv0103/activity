@@ -47,8 +47,22 @@ feedActivity.methods.sendNewsfeed = function() {
  })
 }
 
-feedActivity.statics.insertFromFeed = function(verb, feed) {
- 
+feedActivity.statics.insertFromFeed = function(verb, actor, feed) {
+ var self = this;
+ FollowMap.findGetUids({object:{
+  id: feed.position.id,
+  name: feed.position.name
+ }}, function(users) {
+  for(var i = 0; i <= users.length; i++) {
+   self.create({
+    to_id: users[i],
+    actor: actor,
+    verb: verb,
+    feed_id: feed._id,
+    ranking: feed.ranking
+   })
+  }
+ })
 }
 
 /**
