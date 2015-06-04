@@ -92,7 +92,26 @@ command.find('delete_activity').run({
 ```
 command.find('newsfeed').run({
   
-  // Người hoạt động
+  // Người lấy
+  to_id: 10,
+  
+  // Page info
+  page: {
+    limit: 10,
+    total: 10,
+    current: 1
+  }
+  
+}, function(result) {
+  console.log('result');
+});
+```
+
+# Lấy danh sách thông báo
+```
+command.find('notification').run({
+  
+  // Người lấy
   to_id: 10,
   
   // Page info
