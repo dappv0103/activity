@@ -22,12 +22,20 @@ NotificationCmd.prototype = baseCmd;
 NotificationCmd.prototype.run = function (data, callback) {
   
   var self = this;
+  var perPage = data.page.perPage;
+  var page = Math.max(0, data.page.current);
   
   Notification
   .find({to_id: data.to_id})
   .populate('Feed')
+  .limit(perPage)
+  .skip(perPage * page)
   .exec(function(err, docs) {
-    self.setData(self._buildRenderNotification(docs));
+    self.data = self._buildRenderNotification(docs);
+    self.data.page = {
+      perPage: perPage,
+      page: page
+    }
     return callback(self.getString());
   });
 };
