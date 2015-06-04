@@ -29,7 +29,7 @@ var feedUserSchema = new Schema({
 feedUserSchema.statics.createFromFeed = function(feed) {
  
  // Insert news feed to user page
- this.insert( {
+ return this.insert( {
    to_id: feed.position.id,
    feed_id: feed._id,
    privacy: feed.privacy
