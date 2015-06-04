@@ -16,13 +16,19 @@ addActivityCmd.prototype = baseCmd;
 /**
  * Thêm bảng tin mới
  * 
- * @param Object    data
+ * @param Object    data {verb, actor, object}
  * @param Function  callback
  */
 addActivityCmd.prototype.run = function (data, callback) {
   
   var self = this;
-  Feed.activity(data);
+  
+  // Thêm hoạt động mới
+  Feed.activity(
+      data.verb, 
+      data.actor, 
+      data.object
+  );
   
   this.data = {
     result: 'ok'
