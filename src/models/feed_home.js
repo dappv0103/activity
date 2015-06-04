@@ -24,6 +24,16 @@ var feedHomeSchema = new Schema({
   created_at: { type: Date, default: Date.now }
 });
 
+feedHomeSchema.statics.createFromFeed = function(feed) {
+  FollowMap.findGetUids({object: {
+     id: feed.position.id,
+     type: feed.position.name
+  }}, function(users) {
+      //
+  });
+}
+
+
 feedHomeSchema.statics.createOrUpdate = function(data) {
  var self = this;
  this.find({object: data.object, to_id: data.to_id}, function(err, doct) {
