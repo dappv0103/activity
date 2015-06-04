@@ -24,11 +24,9 @@ NotificationCmd.prototype.run = function (data, callback) {
   var self = this;
   
   // Thêm hoạt động mới
-  Feed.activity(
-      data.verb, 
-      data.actor, 
-      data.object
-  );
+  Notification.find({to_id: data.to_id}).exec(function() {
+    
+  });
   
   this.data = {
     result: 'ok'
