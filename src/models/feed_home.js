@@ -43,9 +43,9 @@ feedHomeSchema.statics.createFromFeed = function(feed) {
   });
 }
 
-feedHomeSchema.statics.findAndRender = function(condition) {
- this.find(condition, function() {
-  
+feedHomeSchema.statics.findByPosition = function(position, callback) {
+ this.find({position: position}, function(err, docs) {
+  return callback(docs);
  });
 }
 
