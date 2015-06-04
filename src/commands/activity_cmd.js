@@ -13,7 +13,12 @@ function addActivityCmd() {
 
 addActivityCmd.prototype = baseCmd;
 
-
+/**
+ * Thêm bảng tin mới
+ * 
+ * @param Object    data
+ * @param Function  callback
+ */
 addActivityCmd.prototype.run = function (data, callback) {
   
   var self = this;
