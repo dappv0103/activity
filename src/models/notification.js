@@ -38,7 +38,15 @@ NotificationSchema.statics.sendFromFeed = function(feed) {
    name: feed.position.name
   }
  }, function(users) {
-  
+  for(var i = 0; i <= users.length; i++) {
+   self.create({
+    verb: "create",
+    to_id: users[i],
+    feed_id: feed._id,
+    meta: [],
+    actors: [feed.created_by]
+   });
+  }
  });
 }
 
