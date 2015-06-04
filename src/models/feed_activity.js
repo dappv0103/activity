@@ -47,6 +47,10 @@ feedActivity.methods.sendNewsfeed = function() {
  })
 }
 
+feedActivity.statics.insertFromFeed = function(verb, feed) {
+ 
+}
+
 /**
  *  Xóa các hoạt động liên quan
  */
