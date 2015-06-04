@@ -26,6 +26,17 @@ var feedUserSchema = new Schema({
   privacy: Number
 });
 
+feedUserSchema.statics.createFromFeed = function(feed) {
+ 
+ // Insert news feed to user page
+ this.insert( {
+   to_id: feed.position.id,
+   feed_id: feed._id,
+   privacy: feed.privacy
+ })
+}
+
+
 feedUserSchema.statics.insertOrUpdate = function(data) {
  var self = this;
  this.findOne({feed_id: data.feed_id}, function(err, doct) {
