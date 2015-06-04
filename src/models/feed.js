@@ -158,9 +158,7 @@ feedSchema.methods.sendNotification = function(users) {
  * Xóa bảng tin
  */ 
 feedSchema.statics.removeFeed = function(object) {
-  this.findOne({object:object}, function(err, doct) {
-   // xóa bảng tin
-   doct.remove();
+  this.findOneAndRemove({object:object}, function(err, doct) {
    if(doct.postion.name === 'group') {
     
     // xóa tin trong group
