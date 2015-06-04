@@ -87,3 +87,22 @@ command.find('delete_activity').run({
   console.log('result');
 });
 ```
+
+# Lấy danh sách bảng tin
+```
+command.find('newsfeed').run({
+  
+  // Người hoạt động
+  to_id: 10,
+  
+  // Page info
+  page: {
+    limit: 10,
+    total: 10,
+    current: 1
+  }
+  
+}, function(result) {
+  console.log('result');
+});
+```
