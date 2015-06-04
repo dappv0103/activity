@@ -24,6 +24,9 @@ var feedActivity = new Schema({
 });
 
 
+/**
+ *  Gửi thông báo sau khi nhận được hành động người mình đang nhận
+ */
 feedActivity.methods.sendNotification = function() {
  Notification.createOrUpdate({
   to_id: this.to_id,
@@ -33,6 +36,9 @@ feedActivity.methods.sendNotification = function() {
  })
 }
 
+/**
+ *  Gửi bảng tin sau khi nhận được hành động người mình đang theo dõi
+ */
 feedActivity.methods.sendNewsfeed = function() {
  FeedHome.createOrUpdate({
   to_id: this.to_id,
@@ -41,6 +47,9 @@ feedActivity.methods.sendNewsfeed = function() {
  })
 }
 
+/**
+ *  Xóa các hoạt động liên quan
+ */
 feedActivity.statics.removeFeedActivty = function(verb, actor, feed_id) {
  this.remove({verb: verb, actor: actor, feed_id: feed_id});
  
