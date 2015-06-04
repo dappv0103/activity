@@ -34,3 +34,12 @@ command.find('add_feed').run({
   console.log('result');
 });
 ```
+# Xóa tin
+```
+command.find('delete_feed').run({object: {
+  id: 10,
+  name: "status"
+}}, function(result) {
+  console.log('result');
+});
+```
