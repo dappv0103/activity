@@ -95,6 +95,12 @@ command.find('newsfeed').run({
   // Người lấy
   to_id: 10,
   
+  // Vị trí hiển thị
+  position: {
+    name: "group",
+    id: 1
+  },
+  
   // Page info
   page: {
     limit: 10,
