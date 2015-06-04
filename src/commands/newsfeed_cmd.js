@@ -32,7 +32,7 @@ Newsfeed.prototype.run = function (data, callback) {
     });
   } else {
     FeedHome
-    .find({to_id:data.position.id})
+    .find({to_id:to_id})
     .populate('Feed')
     .limit(5)
     .exec(function(err, docs) {
