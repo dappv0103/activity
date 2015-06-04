@@ -13,6 +13,12 @@ function addFeedCmd() {
 
 addFeedCmd.prototype = baseCmd;
 
+/**
+ * Thêm bảng tin mới
+ * 
+ * @param Object    data
+ * @param Function  callback
+ */
 addFeedCmd.prototype.run = function (data, callback) {
   var self = this;
   
@@ -34,5 +40,5 @@ addFeedCmd.prototype.run = function (data, callback) {
   this.data = {
     result: 'ok'
   };
-  callback(this.getString());
+  return callback(this.getString());
 };
