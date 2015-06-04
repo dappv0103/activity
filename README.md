@@ -43,3 +43,27 @@ command.find('delete_feed').run({object: {
   console.log('result');
 });
 ```
+
+# Hoạt động
+```
+command.find('activity').run({
+  
+  // Người hoạt động
+  actor: 10,
+  
+  // Hành động
+  verb: 'like',
+  
+  // Đối tượng hoạt động
+  object: {
+    id: 10,
+    name: "status"
+  },
+  
+  // xếp hạng hoạt động
+  ranking: 0.1,
+  
+}, function(result) {
+  console.log('result');
+});
+```
