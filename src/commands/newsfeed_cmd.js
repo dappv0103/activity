@@ -20,10 +20,18 @@ Newsfeed.prototype.run = function (data, callback) {
     .populate('Feed')
     .limit(5)
     .exec(function(err, docs) {
-      return callback(self._buildNewsfeedUser(docs));
+      return callback(self._buildNewsfeedGroup(docs));
     });
   } else (data.position.name == 'user') {
     FeedUser
+    .find({to_id:data.position.id})
+    .populate('Feed')
+    .limit(5)
+    .exec(function(err, docs) {
+      return callback(self._buildNewsfeedUser(docs));
+    });
+  } else {
+    FeedHome
     .find({to_id:data.position.id})
     .populate('Feed')
     .limit(5)
