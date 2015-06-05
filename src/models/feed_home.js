@@ -51,7 +51,7 @@ feedHomeSchema.statics.findByPosition = function(position, callback) {
 
 feedHomeSchema.statics.createOrUpdate = function(data) {
  var self = this;
- this.find({object: data.object, to_id: data.to_id}, function(err, doct) {
+ this.findOne({object: data.object, to_id: data.to_id}, function(err, doct) {
    if(!doct) {
     
     // tạo tin mới
