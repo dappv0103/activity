@@ -15,7 +15,6 @@ User:1    | "Like"       | [Feed:1]          | Feed:1              |            
 ```
 Command.find('activity').run({
   actor_id: 10,
-  verb: "poster",
-  to: ['follow_actor']
+  verb: "created",
 });
 ```
