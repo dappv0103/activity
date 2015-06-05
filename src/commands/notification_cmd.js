@@ -42,10 +42,13 @@ NotificationCmd.prototype.run = function (data, callback) {
 NotificationCmd.prototype._buildRenderNotification = function(docs) {
   var _results = [];
   for(var i = 0; i <= docs.length; i++) {
-    _results.push = {
+    _results.push({
+      _id: docs[i]._id,
+      verb: docs[i].verb,
       actors: docs[i].actors,
-      meta: docs[i].meta
-    }
+      meta: docs[i].meta,
+      is_read: docs[i].is_read
+    });
   }
   return _results;
 }
