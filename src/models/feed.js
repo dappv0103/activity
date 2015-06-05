@@ -34,7 +34,7 @@ var feedSchema = new Schema({
    id: Number
   },
   
-  position:  {
+  _in:  {
    name: String,
    id: Number
   },
