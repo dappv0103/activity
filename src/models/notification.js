@@ -21,7 +21,7 @@ var NotificationSchema = new Schema({
   to_id: Number,
   actors: Array,
   verb:  Schema.Types.Mixed,
-  feed_id:  Schema.Types.ObjectId,
+  feed_id:  [Schema.Types.ObjectId],
   meta: Schema.Types.Mixed,
   of: {
    name: String,
