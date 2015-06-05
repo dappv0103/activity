@@ -28,8 +28,10 @@ Create.prototype.createFeed = function() {
       },
       score: 5
     };
+    
+    
     // Follow Feed
-    FollowMap.insert(followdata);
+    require('./follow')(followdata);
     
     // Alert feed
     Alert.insert(followdata);
