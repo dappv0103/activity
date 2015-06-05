@@ -31,6 +31,7 @@ var NotificationSchema = new Schema({
    type: Boolean,
    default: false,
   },
+  foreign_id: String,
   created_at: { type: Date, default: Date.now },
 });
 
