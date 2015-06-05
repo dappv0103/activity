@@ -36,6 +36,12 @@ MuteAlertCmd.prototype.run = function (data, callback) {
           };
           return callback(self.getString());
         });
+      } else {
+        self.data = {
+          result: 0,
+          message: "Bạn đã đăng ký nhận thông báo trước đó"
+        }
+        return callback(self.getString());
       }
     });
   } else {
