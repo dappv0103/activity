@@ -1,11 +1,10 @@
 #Group
 ```
 ----------------------------------------------
-Group -> join
-Group -> follow -> newsfeed
-Group -> notification -> notify
+Group -> follow -> activity -> newsfeed
+Group -> notification -> activity -> notify
 
-User -> follow -> newsfeed
+User -> follow -> activity -> newsfeed
 
 Feed -> follow -> activity -> newsfeed
 Feed -> notification -> activity -> notify
