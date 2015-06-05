@@ -9,3 +9,13 @@ User:1    | "Create"     | [Feed:1, Feed:2]  | g:1                 | {c:"Demo"} 
 User:1    | "Like"       | [Feed:1]          | Feed:1              |                | [2, 0, 1]       | false       | 140050605
 
 ```
+
+#Activity
+
+```
+Command.find('activity').run({
+  actor_id: 10,
+  verb: "poster",
+  to: ['follow_actor']
+});
+```
