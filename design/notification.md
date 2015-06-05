@@ -8,6 +8,7 @@
 - Verb
 - Feed_id
 - Foreign_id
+- Of
 - Meta
 - Actors
 - Is_read
