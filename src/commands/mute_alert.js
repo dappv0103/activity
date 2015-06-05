@@ -23,15 +23,31 @@ MuteAlertCmd.prototype.run = function (data, callback) {
   
   var self = this;
   
-  // Thêm hoạt động mới
-  AlertMap.remove(data.object, function(err, count) {
-    self.data = {
-      result: '1',
-      count: count
-    };
-    return callback(this.getString());
-  });
-  
+  if(data.mute === false) {
+    AlertMap.findOne({object: data.object, user_id: data.user_id}, function(err, doct) {
+      if(!doct) {
+        AlertMap.insert({
+          user_id: data.user_id,
+          object:data.object
+        }, function(err, docs) {
+          self.data = {
+            result: '1',
+            count: 1
+          };
+          return callback(this.getString());
+        });
+      }
+    });
+  } else {
+    // Thêm hoạt động mới
+    AlertMap.remove(data.object, function(err, count) {
+      self.data = {
+        result: '1',
+        count: count
+      };
+      return callback(this.getString());
+    });
+  }
   
   
 };
