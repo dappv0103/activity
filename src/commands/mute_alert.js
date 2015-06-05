@@ -24,7 +24,7 @@ MuteAlertCmd.prototype.run = function (data, callback) {
   var self = this;
   
   // Thêm hoạt động mới
-  AlertMap.remove(data, function(err, count) {
+  AlertMap.remove(data.object, function(err, count) {
     self.data = {
       result: '1',
       count: count
