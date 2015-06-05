@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var Feed = mongoose.model('Feed');
+var Notification = mongoose.model('Notification');
 var baseCmd = require('./base_cmd');
 
 module.exports = NotificationCmd;
@@ -38,3 +38,14 @@ NotificationCmd.prototype.run = function (data, callback) {
     return callback(self.getString());
   });
 };
+
+NotificationCmd.prototype._buildRenderNotification = function(docs) {
+  var _results = [];
+  for(var i = 0; i <= docs.length; i++) {
+    _results.push = {
+      actors: docs[i].actors,
+      meta: docs[i].meta
+    }
+  }
+  return _results;
+}
