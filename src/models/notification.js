@@ -79,7 +79,7 @@ NotificationSchema.statics.insertOrUpdate = function(data) {
   } else {
    
    // Thêm danh sách người mới hoạt động
-   doct.actors.push(data.actor);
+   doct.actors.$push(data.actor);
    doct.created_at = Date.now;
    doct.meta = data.meta;
    doct.save(function(err) {
