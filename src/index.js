@@ -15,12 +15,10 @@ var server = net.createServer(function(socket) { //'connection' listener
     var cmd =  command.find(data.name);
     delete data.name;
     if(cmd != null) {
-      if(data.is_next === true) { 
-        process.nextTick(function() {
-          cmd.run(data);
-        });
-        socket.write({'status:'1});
-      }
+      
+      cmd.run(data, function(results) {
+        socket.write(results);
+      });
     } else {
       socket.write({'status:'1});
     }
