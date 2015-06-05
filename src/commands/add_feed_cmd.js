@@ -26,7 +26,7 @@ addFeedCmd.prototype.run = function (data, callback) {
   var feed = new Feed({
     object: data.object,
     created_by: data.created_by,
-    position: data.position,
+    _in: data._in,
     meta: data.meta,
     ranking: data.ranking,
     privacy: data.privacy;
