@@ -6,4 +6,3 @@
 - Share
 - Comment
 - Invite
-- 
