@@ -34,7 +34,7 @@ MuteAlertCmd.prototype.run = function (data, callback) {
             result: '1',
             count: 1
           };
-          return callback(this.getString());
+          return callback(self.getString());
         });
       }
     });
@@ -45,7 +45,7 @@ MuteAlertCmd.prototype.run = function (data, callback) {
         result: '1',
         count: count
       };
-      return callback(this.getString());
+      return callback(self.getString());
     });
   }
   
