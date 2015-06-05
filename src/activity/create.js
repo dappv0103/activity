@@ -20,16 +20,20 @@ Create.prototype.createFeed = function() {
   
   feed.save(function(err) {
     
-    
-    // Follow Feed
-    FollowMap.insert({
+    var followdata = {
       to_id: self.created_by,
       object: {
         name: 'Feed',
         id: feed._id,
       },
       score: 5
-    });
+    };
+    // Follow Feed
+    FollowMap.insert(followdata);
+    
+    // Alert feed
+    Alert.insert(followdata);
+    
     // Log error
     feed.createNewsfeedPosition();
   });
