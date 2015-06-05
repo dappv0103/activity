@@ -32,7 +32,7 @@ addActivityCmd.prototype.run = function (data, callback) {
     verb: data.verb,
     
     // Hành động trong
-    _in: {
+    object: {
       name: "group",
       id: 10
     },
