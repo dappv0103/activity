@@ -23,6 +23,10 @@ var NotificationSchema = new Schema({
   verb:  Schema.Types.Mixed,
   feed_id:  Schema.Types.ObjectId,
   meta: Schema.Types.Mixed,
+  of: {
+   name: String,
+   id: Number
+  }
   is_read: {
    type: Boolean,
    default: false,
