@@ -30,11 +30,13 @@ NotificationCmd.prototype.run = function (data, callback) {
   .limit(perPage)
   .skip(perPage * page)
   .exec(function(err, docs) {
-    self.data = self._buildRenderNotification(docs);
-    self.data.page = {
-      perPage: perPage,
-      current: page
-    }
+    self.data = {
+      items: self._buildRenderNotification(docs),
+      page: {
+        perPage: perPage,
+        current: page
+      }
+    };
     return callback(self.getString());
   });
 };
