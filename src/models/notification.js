@@ -23,7 +23,7 @@ var NotificationSchema = new Schema({
   verb:  Schema.Types.Mixed,
   feed_id:  [Schema.Types.ObjectId],
   meta: Schema.Types.Mixed,
-  of: {
+  _in: {
    name: String,
    id: Number
   }
