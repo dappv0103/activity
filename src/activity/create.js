@@ -34,7 +34,7 @@ Create.prototype.createFeed = function() {
     require('./follow')(followdata);
     
     // Alert feed
-    Alert.insert(followdata);
+    AlertMap.insert(followdata);
     
     // Log error
     feed.createNewsfeedPosition();
