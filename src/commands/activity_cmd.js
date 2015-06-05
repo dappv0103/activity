@@ -25,11 +25,20 @@ addActivityCmd.prototype.run = function (data, callback) {
   
   // Thêm hoạt động mới
   Feed.activity({
+    // Người hoạt động
     actor:data.actor,
-    verb: data.verb,
-    _in: "Group:1",
     
-    object: data.object,
+    // Hành động
+    verb: data.verb,
+    
+    // Hành động trong
+    _in: {
+      name: "group",
+      id: 10
+    },
+    
+    // Dữ liệu lưu trữ
+    data: data.data,
   });
   
   this.data = {
