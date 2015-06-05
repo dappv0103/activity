@@ -62,7 +62,7 @@ NotificationSchema.statics.sendFromFeed = function(feed) {
  */
 NotificationSchema.statics.insertOrUpdate = function(data) {
  var self = this;
- this.findOne({foreign_id: data.foreign_id}, function(err, doct) {
+ this.findOne({foreign_id: data.foreign_id, to_id: data.to_id}, function(err, doct) {
   if(!doct ) {
    
    // khởi tạo thông báo mới
