@@ -62,7 +62,7 @@ NotificationSchema.statics.sendFromFeed = function(feed) {
  */
 NotificationSchema.statics.insertOrUpdate = function(data) {
  var self = this;
- this.findOne({feed_id: data.feed_id, verb: data.verb}, function(err, doct) {
+ this.findOne({foreign_id: data.foreign_id}, function(err, doct) {
   if(!doct ) {
    
    // khởi tạo thông báo mới
@@ -70,8 +70,10 @@ NotificationSchema.statics.insertOrUpdate = function(data) {
     to_id: data.to_id,
     actors: [data.actor],
     verb: data.verb,
-    feed_id: data.feed_id,
-    meta.data.meta
+    of: doct.of,
+    feed_id: [data.feed_id],
+    meta: data.meta,
+    foreign_id: data.foreign_id
    });
    
   } else {
