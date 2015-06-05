@@ -98,11 +98,11 @@ feedSchema.methods.createNewsfeedPosition = function() {
 feedSchema.statics.removeFeed = function(object) {
   this.findOneAndRemove({object:object}, function(err, doct) {
    var condition = {feed_id: doct._id};
-   if(doct.postion.name === 'group') {
+   if(doct.postion.name === this.POSITION_GROUP) {
     
     // xóa tin trong group
     FeedGroup.remove(condition); 
-   } else if(doct.postion.name === 'user') {
+   } else if(doct.postion.name === this.POSITION_USER) {
     
     // xóa tin trong trang người dùng
     FeedUser.remove(condition); 
