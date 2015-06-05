@@ -20,6 +20,8 @@ Create.prototype.createFeed = function() {
   
   feed.save(function(err) {
     
+    
+    
     var followdata = {
       to_id: self.created_by,
       object: {
@@ -31,7 +33,7 @@ Create.prototype.createFeed = function() {
     
     
     // Follow Feed
-    require('./follow')(followdata);
+    FollowMap.insert(followdata);
     
     // Alert feed
     AlertMap.insert(followdata);
