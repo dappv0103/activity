@@ -7,6 +7,7 @@ function Create(activity) {
 }
 
 Create.prototype.createFeed = function() {
+  var self;
   // Tạo feed khi có hành động đăng đối tượng nào đấy
   var feed = new Feed({
     object: data.object,
@@ -18,6 +19,17 @@ Create.prototype.createFeed = function() {
   });
   
   feed.save(function(err) {
+    
+    
+    // Follow Feed
+    FollowMap.insert({
+      to_id: self.created_by,
+      object: {
+        name: 'Feed',
+        id: feed._id,
+      },
+      score: 5
+    });
     // Log error
     feed.createNewsfeedPosition();
   });
