@@ -27,7 +27,6 @@ NotificationCmd.prototype.run = function (data, callback) {
   
   Notification
   .find({to_id: data.to_id})
-  .populate('Feed')
   .limit(perPage)
   .skip(perPage * page)
   .exec(function(err, docs) {
