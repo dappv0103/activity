@@ -24,11 +24,13 @@ addActivityCmd.prototype.run = function (data, callback) {
   var self = this;
   
   // Thêm hoạt động mới
-  Feed.activity(
-      data.verb, 
-      data.actor, 
-      data.object
-  );
+  Feed.activity({
+    actor:data.actor,
+    verb: data.verb,
+    _in: "Group:1",
+    
+    object: data.object,
+  });
   
   this.data = {
     result: 'ok'
