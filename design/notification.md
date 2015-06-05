@@ -3,10 +3,15 @@
 #Notification
 
 ```
-To        | Verb         | Feed_id           | Foreign_id          | Meta           | Actor           |Is_Read      | Created_at
---------------------------------------------------------------------------------------------------------------------------------
-User:1    | "Create"     | [Feed:1, Feed:2]  | g:1                 | {c:"Demo"}     | [1, 2, 3]       | false       | 140050605
-User:1    | "Like"       | [Feed:1]          | Feed:1              |                | [2, 0, 1]       | false       | 140050605
+
+- To
+- Verb
+- Feed
+- Foreign_id
+- Meta
+- Actors
+- Is_read
+- Created_at
 
 ```
 
