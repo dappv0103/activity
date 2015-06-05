@@ -14,7 +14,7 @@ function NotificationCmd() {
 NotificationCmd.prototype = baseCmd;
 
 /**
- * Thêm bảng tin mới
+ * List notification
  * 
  * @param Object    data {verb, actor, object}
  * @param Function  callback
