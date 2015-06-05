@@ -40,7 +40,7 @@ MuteAlertCmd.prototype.run = function (data, callback) {
     });
   } else {
     // Thêm hoạt động mới
-    AlertMap.remove(data.object, function(err, count) {
+    AlertMap.remove({user_id: data.user_id, object: data.object}, function(err, count) {
       self.data = {
         result: '1',
         count: count
