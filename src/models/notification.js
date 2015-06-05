@@ -39,7 +39,7 @@ NotificationSchema.statics.sendFromFeed = function(feed) {
   }
  }, function(users) {
   for(var i = 0; i <= users.length; i++) {
-   self.create({
+   self.insertOrUpdate({
     verb: "create",
     to_id: users[i],
     feed_id: feed._id,
