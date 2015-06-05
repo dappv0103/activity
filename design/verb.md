@@ -1,1 +1,5 @@
 
+- Follow
+- Like
+- Create
+- Share
