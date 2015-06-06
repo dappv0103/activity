@@ -30,8 +30,8 @@ var feedSchema = new Schema({
   created_by: Number,
   
   object:  {
-   type: String,
    id: Number
+   name: String,
   },
   
   _in:  {
