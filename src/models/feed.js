@@ -75,7 +75,7 @@ Feed.methods.createNewsfeedPosition = function() {
     
     // Gửi bài viết đến những người đang theo dõi
     if(this.privacy === this.P_PUBLISH) {
-     feedHome.createFromFeed(this);
+     FeedHome.createFromFeed(this);
     }
   } else if(this.position.name === this.POSITION_GROUP) {
     
@@ -83,7 +83,7 @@ Feed.methods.createNewsfeedPosition = function() {
     FeedGroup.createFromFeed(this);
     
     // Tạo bài viết trong trang chủ người dùng
-    feedHome.createFromFeed(this);
+    FeedHome.createFromFeed(this);
     
     // Gửi thông báo đến người đăng ký nhận thông báo nhóm
     Notification.sendFromFeed(this);
