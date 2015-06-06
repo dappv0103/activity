@@ -37,6 +37,7 @@ var NotificationSchema = new Schema({
 
 NotificationSchema.statics.sendFromFeed = function(feed) {
  var self = this;
+ var foreign_id = feed._in.name +':'+  feed._in.id;
  AlertMap.findGetUids({
   object: {
    id: feed._in.id,
@@ -50,7 +51,8 @@ NotificationSchema.statics.sendFromFeed = function(feed) {
     feed_id: feed._id,
     _in: feed._in,
     meta: [],
-    actor: feed.created_by
+    actor: feed.created_by,
+    foreign_id: foreign_id
    });
   }
  });
