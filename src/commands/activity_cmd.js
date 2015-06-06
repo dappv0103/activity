@@ -2,16 +2,16 @@ var mongoose = require('mongoose');
 var Feed = mongoose.model('Feed');
 var baseCmd = require('./base_cmd');
 
-module.exports = addActivityCmd;
+module.exports = ActivityCmd;
 
 
-function addActivityCmd() {
-  if (!(this instanceof addActivityCmd)) return new addActivityCmd();
+function ActivityCmd() {
+  if (!(this instanceof ActivityCmd)) return new ActivityCmd();
   this.data = null;
   this.error = null;
 };
 
-addActivityCmd.prototype = baseCmd;
+ActivityCmd.prototype = baseCmd;
 
 /**
  * Thêm bảng tin mới
@@ -19,7 +19,7 @@ addActivityCmd.prototype = baseCmd;
  * @param Object    data {verb, actor, object}
  * @param Function  callback
  */
-addActivityCmd.prototype.run = function (data, callback) {
+ActivityCmd.prototype.run = function (data, callback) {
   
   var self = this;
   
