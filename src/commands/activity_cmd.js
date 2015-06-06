@@ -35,10 +35,7 @@ ActivityCmd.prototype.run = function (data, callback) {
     object: {
       name: "group",
       id: 10
-    },
-    
-    // Dữ liệu lưu trữ
-    data: data.data,
+    }
   });
   
   this.data = {
