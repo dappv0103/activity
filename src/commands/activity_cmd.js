@@ -44,6 +44,6 @@ ActivityCmd.prototype.run = function (data, callback) {
   this.data = {
     result: 'ok'
   };
-  callback(this.getString());
+  return callback(this.getString());
 };
 
