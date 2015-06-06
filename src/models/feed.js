@@ -25,7 +25,7 @@ var Notification = mongoose.model('Notification');
  
 
 
-var FeedSchema = new Schema({
+var Feed = new Schema({
  
   created_by: Number,
   
@@ -56,16 +56,16 @@ var FeedSchema = new Schema({
 });
 
 // private feed
-FeedSchema.prototype.P_PRIVATE;
+Feed.prototype.P_PRIVATE;
 
 // public feed
-FeedSchema.prototype.P_PUBLISH;
+Feed.prototype.P_PUBLISH;
 
-FeedSchema.prototype.POSITION_USER = 'user';
-FeedSchema.prototype.POSITION_GROUP = 'group';
+Feed.prototype.POSITION_USER = 'user';
+Feed.prototype.POSITION_GROUP = 'group';
 
 // Khởi tạo các đối tượng newsfeed liên quan
-FeedSchema.methods.createNewsfeedPosition = function() {
+Feed.methods.createNewsfeedPosition = function() {
     
   var self = this;
   if(this.position.name === this.POSITION_USER) {
@@ -95,7 +95,7 @@ FeedSchema.methods.createNewsfeedPosition = function() {
 /**
  * Xóa bảng tin
  */ 
-FeedSchema.statics.removeFeed = function(object) {
+Feed.statics.removeFeed = function(object) {
   this.findOneAndRemove({object:object}, function(err, doct) {
    var condition = {feed_id: doct._id};
    if(doct.postion.name === this.POSITION_GROUP) {
@@ -122,7 +122,7 @@ FeedSchema.statics.removeFeed = function(object) {
 /**
  * Xóa hoạt động
  */
-FeedSchema.statics.removeActivity = function(verb, actor, object) {
+Feed.statics.removeActivity = function(verb, actor, object) {
  this.findOne({object: object}, function(err, doct) {
   FeedActivity.removeFeedActivty(verb, actor, doct);
  });
@@ -132,7 +132,7 @@ FeedSchema.statics.removeActivity = function(verb, actor, object) {
 /**
  * Hoạt động trên bảng tin
  */
-FeedSchema.statics.activity = function(verb, actor, data) {
+Feed.statics.activity = function(verb, actor, data) {
  
   this.findOne({object: data.object}, function(err, doct) {
     FeedActivity.insertFromFeed(verb, actor, doct);
@@ -140,4 +140,4 @@ FeedSchema.statics.activity = function(verb, actor, data) {
 }
 
 
-mongoose.model('Feed', FeedSchema);
+mongoose.model('Feed', Feed);
