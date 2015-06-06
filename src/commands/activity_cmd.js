@@ -32,10 +32,7 @@ ActivityCmd.prototype.run = function (data, callback) {
     verb: data.verb,
     
     // Hành động trong
-    object: {
-      name: "group",
-      id: 10
-    }
+    object: data.object
   });
   
   this.data = {
