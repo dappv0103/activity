@@ -25,7 +25,7 @@ var Notification = mongoose.model('Notification');
  
 
 
-var feedSchema = new Schema({
+var FeedSchema = new Schema({
  
   created_by: Number,
   
@@ -56,16 +56,16 @@ var feedSchema = new Schema({
 });
 
 // private feed
-feedSchema.prototype.P_PRIVATE;
+FeedSchema.prototype.P_PRIVATE;
 
 // public feed
-feedSchema.prototype.P_PUBLISH;
+FeedSchema.prototype.P_PUBLISH;
 
-feedSchema.prototype.POSITION_USER = 'user';
-feedSchema.prototype.POSITION_GROUP = 'group';
+FeedSchema.prototype.POSITION_USER = 'user';
+FeedSchema.prototype.POSITION_GROUP = 'group';
 
 // Khởi tạo các đối tượng newsfeed liên quan
-feedSchema.methods.createNewsfeedPosition = function() {
+FeedSchema.methods.createNewsfeedPosition = function() {
     
   var self = this;
   if(this.position.name === this.POSITION_USER) {
@@ -95,7 +95,7 @@ feedSchema.methods.createNewsfeedPosition = function() {
 /**
  * Xóa bảng tin
  */ 
-feedSchema.statics.removeFeed = function(object) {
+FeedSchema.statics.removeFeed = function(object) {
   this.findOneAndRemove({object:object}, function(err, doct) {
    var condition = {feed_id: doct._id};
    if(doct.postion.name === this.POSITION_GROUP) {
@@ -122,7 +122,7 @@ feedSchema.statics.removeFeed = function(object) {
 /**
  * Xóa hoạt động
  */
-feedSchema.statics.removeActivity = function(verb, actor, object) {
+FeedSchema.statics.removeActivity = function(verb, actor, object) {
  this.findOne({object: object}, function(err, doct) {
   FeedActivity.removeFeedActivty(verb, actor, doct);
  });
@@ -132,7 +132,7 @@ feedSchema.statics.removeActivity = function(verb, actor, object) {
 /**
  * Hoạt động trên bảng tin
  */
-feedSchema.statics.activity = function(verb, actor, data) {
+FeedSchema.statics.activity = function(verb, actor, data) {
  
   this.findOne({object: data.object}, function(err, doct) {
     FeedActivity.insertFromFeed(verb, actor, doct);
@@ -140,4 +140,4 @@ feedSchema.statics.activity = function(verb, actor, data) {
 }
 
 
-mongoose.model('Feed', feedSchema);
+mongoose.model('Feed', FeedSchema);
