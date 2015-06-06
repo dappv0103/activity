@@ -39,8 +39,8 @@ NotificationSchema.statics.sendFromFeed = function(feed) {
  var self = this;
  AlertMap.findGetUids({
   object: {
-   id: feed.position.id,
-   name: feed.position.name
+   id: feed._in.id,
+   name: feed._in.name
   }
  }, function(users) {
   for(var i = 0; i <= users.length; i++) {
@@ -48,8 +48,9 @@ NotificationSchema.statics.sendFromFeed = function(feed) {
     verb: "create",
     to_id: users[i],
     feed_id: feed._id,
+    _in: feed._in,
     meta: [],
-    actors: [feed.created_by]
+    actor: feed.created_by
    });
   }
  });
