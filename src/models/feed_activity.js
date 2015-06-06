@@ -20,7 +20,10 @@ var feedActivity = new Schema({
   verb:   Schema.Types.Mixed,
   feed_id: Schema.Types.ObjectId,
   ranking: Number,
-  created_time: { type: Date, default: Date.now },
+  created_time: { 
+   type: Date, 
+   default: Date.now 
+  },
 });
 
 
@@ -32,7 +35,12 @@ feedActivity.methods.sendNotification = function() {
   to_id: this.to_id,
   actor:this.actor,
   verb: this.verb,
+  _in: {
+   name: 'Feed',
+   id: this.feed_id,
+  }
   feed_id: this.feed_id,
+  foreign_id: this.feed_id
  })
 }
 
