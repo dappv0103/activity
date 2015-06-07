@@ -32,11 +32,13 @@ var Feed = new Schema({
   object:  {
    id: Number
    name: String,
+   meta: Schema.Types.Mixed
   },
   
   _in:  {
    name: String,
-   id: Number
+   id: Number,
+   meta: Schema.Types.Mixed
   },
   
   created_at: { 
