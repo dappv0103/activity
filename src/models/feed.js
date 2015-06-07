@@ -1,10 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var FeedUser = mongoose.model('FeedUser');
-var FeedGroup = mongoose.model('FeedGroup');
 var FeedHome = mongoose.model('FeedHome');
-var FeedActivity = mongoose.model('FeedActivity');
 var Notification = mongoose.model('Notification');
 
 
