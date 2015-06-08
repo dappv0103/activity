@@ -1,18 +1,13 @@
-var util = require('util');
 var mongoose = require('mongoose');
 var Feed = mongoose.model('Feed');
-var baseCommand = require('./base_command');
 
 module.exports = AddCommand;
 
 
 function AddCommand() {
   if (!(this instanceof AddCommand)) return new AddCommand();
-  this.data = null;
-  this.error = null;
 };
 
-util.inspect(baseCommand, AddCommand);
 
 /**
  * Thêm bảng tin mới
