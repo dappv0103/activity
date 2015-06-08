@@ -32,7 +32,7 @@ var Feed = new Schema({
    meta: Schema.Types.Mixed
   },
   
-  _in:  {
+  position:  {
    name: String,
    id: Number,
    meta: Schema.Types.Mixed
