@@ -16,7 +16,21 @@ AddCommand.prototype = baseCmd;
 /**
  * Thêm bảng tin mới
  * 
- * @param Object    data
+ * @param Object    data :
+ *                    - created_by
+ *                      - id
+ *                      - name
+ *                      - avatar
+ *                    - object
+ *                      - id
+ *                      - type
+ *                      - content
+ * 
+ *                    - position
+ *                      - id
+ *                      - name
+ *                    - meta
+ *                    - privacy
  * @param Function  callback
  */
 AddCommand.prototype.run = function (data, callback) {
