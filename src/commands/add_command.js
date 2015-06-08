@@ -48,7 +48,6 @@ AddCommand.prototype.run = function (data, callback) {
       _result.meta = feed.meta;
       _result.created_at = feed.created_at;
     }
-    self.data = _result;
-    return callback(self.getString());
+    return callback(JSON.stringify(_result));
   });
 };
