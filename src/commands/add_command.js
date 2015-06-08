@@ -36,6 +36,7 @@ AddCommand.prototype.run = function (data, callback) {
   feed.save(function(err) {
     if(err) {
       _result.success = false;
+      _result.messages = err;
     } else {
       _result.success = true;
       _result.position = feed.position;
