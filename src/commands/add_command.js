@@ -1,6 +1,7 @@
+var util = require('util');
 var mongoose = require('mongoose');
 var Feed = mongoose.model('Feed');
-var baseCmd = require('./base_cmd');
+var baseCommand = require('./base_command');
 
 module.exports = AddCommand;
 
@@ -11,7 +12,7 @@ function AddCommand() {
   this.error = null;
 };
 
-AddCommand.prototype = baseCmd;
+util.inspect(baseCommand, AddCommand);
 
 /**
  * Thêm bảng tin mới
