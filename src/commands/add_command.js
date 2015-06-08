@@ -31,6 +31,7 @@ AddCommand.prototype.run = function (data, callback) {
       _result.position = feed.position;
       _result.object = feed.object;
       _result.meta = feed.meta;
+      _result.created_at = feed.created_at;
     }
     self.data = _result;
     return callback(self.getString());
