@@ -1,11 +1,11 @@
 var mongoose = require('mongoose');
 var Feed = mongoose.model('Feed');
 
-module.exports = AddCommand;
+module.exports = Add;
 
 
-function AddCommand() {
-  if (!(this instanceof AddCommand)) return new AddCommand();
+function Add() {
+  if (!(this instanceof Add)) return new Add();
 };
 
 
@@ -29,7 +29,7 @@ function AddCommand() {
  *                    - privacy
  * @param Function  callback
  */
-AddCommand.prototype.run = function (data, callback) {
+Add.prototype.run = function (data, callback) {
   var self = this;
   var _result = {};
   var feed = new Feed(data);
