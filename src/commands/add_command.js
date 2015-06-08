@@ -35,9 +35,4 @@ AddCommand.prototype.run = function (data, callback) {
     self.data = _result;
     return callback(self.getString());
   });
-  
-  this.data = {
-    result: 'ok'
-  };
-  return callback(this.getString());
 };
