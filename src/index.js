@@ -20,7 +20,10 @@ var server = net.createServer(function(socket) { //'connection' listener
         socket.write(results);
       });
     } else {
-      socket.write({'status:'1});
+      socket.write(JSON.stringify({
+        success: false,
+        message: 'Lệnh không đúng định dạng'
+      }));
     }
     
   });
