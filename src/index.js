@@ -15,7 +15,7 @@ var server = net.createServer(function(socket) { //'connection' listener
     var commandId = data.id;
     var args = data.arguments;
     
-    Command.command(commandId, args, function(buffer) {
+    Command.run(commandId, args, function(buffer) {
         socket.write(buffer);
     });
     
