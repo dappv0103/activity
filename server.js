@@ -1,4 +1,8 @@
+var server = require('./src');
+var Parameters = [];
 
-require('./configs');
 
-require('./src');
+var Server = server.create(Parameters);
+
+// Listen to port
+Server.listen(6080);
