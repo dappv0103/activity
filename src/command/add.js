@@ -1,4 +1,4 @@
-var feed = require('../feed');
+var Feed = require('../feed');
 
 module.exports = Add;
 
@@ -28,21 +28,6 @@ function Add() {
  *                    - privacy
  * @param Function  callback
  */
-Add.prototype.run = function (data, callback) {
-  var self = this;
-  var _result = {};
-  var feed = new Feed(data);
-  feed.save(function(err) {
-    if(err) {
-      _result.success = false;
-      _result.messages = err;
-    } else {
-      _result.success = true;
-      _result.position = feed.position;
-      _result.object = feed.object;
-      _result.meta = feed.meta;
-      _result.created_at = feed.created_at;
-    }
-    return callback(JSON.stringify(_result));
-  });
+Add.prototype.exec = function (args, callback) {
+  Feed.create(args, callback);
 };
