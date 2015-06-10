@@ -1,5 +1,4 @@
-var mongoose = require('mongoose');
-var Feed = mongoose.model('Feed');
+var feed = require('../feed');
 
 module.exports = Add;
 
