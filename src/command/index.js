@@ -1,5 +1,6 @@
 var Status = require('./status');
-export = {
+
+module.exports = {
   
  /**
   * List Command supported
