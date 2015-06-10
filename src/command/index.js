@@ -25,7 +25,7 @@ module.exports = {
     return command.exec(args, callback);
   }
   return callback(JSON.stringify({
-    status: Status.COMMAND_NOT_SUPPORTED;
+    status: Status.NOT_SUPPORTED_COMMAND;
   }));
  },
  
