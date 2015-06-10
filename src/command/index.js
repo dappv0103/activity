@@ -40,6 +40,8 @@ module.exports = {
  
  /**
   * Check if support command to the server
+  * 
+  * @param string id Command ID
   */
  supportsCommand : function(id) {
    return (!!this.supportedCommands[id]);
