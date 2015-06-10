@@ -6,10 +6,10 @@ module.exports = {
   * List Command supported
   */
  supportedCommands: [
-  'ADD' : "./add",
-  'EDIT' : "./edit",
-  'DELETE' : "./delete",
-  'ACTIVITY' : "./activity"
+  'ADD' : "./command/add",
+  'EDIT' : "./command/edit",
+  'DELETE' : "./command/delete",
+  'ACTIVITY' : "./command/activity"
  ],
  
  /**
