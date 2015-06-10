@@ -1,8 +1,10 @@
-var server = require('./src');
+var Server = require('./src');
 var Parameters = [];
 
 
-var Server = server.create(Parameters);
+var server = new Server(Parameters);
 
 // Listen to port
-Server.listen(6080);
+server.listen(6080, function() {
+  console.log('connection to server port ' + 6080);
+});
