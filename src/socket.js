@@ -11,6 +11,8 @@ function Socket(socket) {
 
 /**
  * On data event
+ * 
+ * @param buffer data
  */
 Socket.prototype.onData = function(data) {
   data = JSON.parse(data);
@@ -18,3 +20,18 @@ Socket.prototype.onData = function(data) {
   var args = data.arguments;
   Command.run(commandId, args, this.response.bind(this));
 }
+
+/**
+ * On client disconnect to the server
+ */
+Socket.prototype.onEnd = function() {
+  console.log('Client disconnect');
+}
+
+/**
+ * Returns data to the client
+ */
+Socket.prototype.response = function(buffer) {
+  this.socket.write(buffer);
+}
+
