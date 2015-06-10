@@ -42,6 +42,6 @@ module.exports = {
   * Check if support command to the server
   */
  supportsCommand : function(id) {
-   return (!this.commands[id]);
+   return (!!this.commands[id]);
  }
 }
