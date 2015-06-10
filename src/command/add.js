@@ -1,5 +1,5 @@
 var Feed = require('../feed');
-
+var Status = require('../status');
 module.exports = Add;
 
 
