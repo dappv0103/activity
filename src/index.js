@@ -18,6 +18,8 @@ function Server(parameters) {
 
 /**
  * On connection for the server
+ * 
+ * @param Object socket socket of the client
  */
 Server.prototype.onconnection = function(socket) {
  return new Socket(socket);
@@ -25,6 +27,9 @@ Server.prototype.onconnection = function(socket) {
 
 /**
  * Listen the port to server
+ * 
+ * @param int port
+ * @param function callback 
  */
 Server.prototype.listen = function(port, callback) {
     this.server.listen(port, callback);
