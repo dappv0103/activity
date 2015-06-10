@@ -4,28 +4,27 @@ var net = require('net'),
     mongoose.connect('mongodb://localhost/feed');
 
 
-var server = net.createServer(function(socket) { //'connection' listener
+module.exports = Server;
 
+/**
+ * Server parameters
+ * 
+ * @param mixed parameters
+ */
+function Server(parameters) {
+ this.server = net.createServer(this.onconnection.bind(this));
+}
 
-  console.log('client connected');
-  
-  // on data
-  socket.on('data', function(data) {
-    data = JSON.parse(data);  
-    var commandId = data.id;
-    var args = data.arguments;
-    
-    Command.exec(commandId, args, function(buffer) {
-        socket.write(buffer);
-    });
-    
-  });
-  
-  socket.on('end', function() {
-    console.log('client disconnected');
-  });
-  
-});
-server.listen(8001, function() { //'listening' listener
-  console.log('server bound'+8001);
-});
+/**
+ * On connection for the server
+ */
+Server.prototype.onconnection = function(socket) {
+ return new Socket(socket);
+}
+
+/**
+ * Listen the port to server
+ */
+Server.prototype.listen = function(port, callback) {
+    this.server.listen(port, callback);
+}
