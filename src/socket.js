@@ -29,9 +29,18 @@ Socket.prototype.onEnd = function() {
 }
 
 /**
+ * Returns buffer to the client
+ * 
+ * @param string buffer
+ */
+Socket.prototype.write = function(buffer) {
+  this.socket.write(buffer);
+}
+
+/**
  * Returns data to the client
  */
 Socket.prototype.response = function(buffer) {
-  this.socket.write(buffer);
+  this.write(buffer);
 }
 
