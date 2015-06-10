@@ -29,5 +29,11 @@ function Add() {
  * @param Function  callback
  */
 Add.prototype.exec = function (args, callback) {
-  Feed.create(args, callback);
+  var validator = Feed.validator(args);
+  if(validator.passes()) {
+    return Feed.create(args, callback);
+  }
+  return callback(JSON.stringify({
+    status: Status.VALIDATOR_FEILED;
+  }));
 };
