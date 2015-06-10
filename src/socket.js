@@ -39,6 +39,8 @@ Socket.prototype.write = function(buffer) {
 
 /**
  * Returns data to the client
+ * 
+ * @param string buffer
  */
 Socket.prototype.response = function(buffer) {
   this.write(buffer);
