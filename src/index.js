@@ -1,7 +1,8 @@
 var net = require('net'),
     Command = require('./commands');
     mongoose = require('mongoose');
-    mongoose.connect('mongodb://localhost/feed');
+    mongoose.connect('mongodb://localhost/feed'),
+    Socket = require('./socket');
 
 
 module.exports = Server;
