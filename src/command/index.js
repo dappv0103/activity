@@ -29,6 +29,15 @@ export = {
  },
  
  /**
+  * Get Command
+  * 
+  * @param string $id Command ID
+  */
+ getCommand: function(id) {
+   return require(this.supportedCommands[id]);
+ }
+ 
+ /**
   * Check if support command to the server
   */
  supportsCommand : function(id) {
